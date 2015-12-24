@@ -6,13 +6,14 @@
 //  Copyright © 2015 FHWS. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 class DashboardViewController: UIViewController
 {
 
-    @IBOutlet weak var labelCity: UITextField!
-    @IBOutlet weak var labelTemperature: UITextField!
+    @IBOutlet weak var labelCity: UILabel!
+    @IBOutlet weak var labelTemperature: UILabel!
 
     override func viewDidLoad()
     {
@@ -45,14 +46,24 @@ class DashboardViewController: UIViewController
                                                               return
                                                           }
 
+                                                          print(jsonResult)
+
                                                           if let name = jsonResult.valueForKey("name") as? String
                                                           {
-                                                              self.labelCity.text = name
+                                                              print(name)
+
+                                                              dispatch_async(dispatch_get_main_queue())
+                                                              {
+                                                                  self.labelCity.text = name
+                                                              }
                                                           }
 
                                                           if let temperature = jsonResult.valueForKey("main")?.valueForKey("temp") as? Float
                                                           {
-                                                              self.labelTemperature.text = "\(temperature - 273.15)"
+                                                              dispatch_async(dispatch_get_main_queue())
+                                                              {
+                                                                  self.labelTemperature.text = String(format: "%.1f", (temperature - 273.15))
+                                                              }
                                                           }
                                                       })
 
