@@ -8,54 +8,61 @@
 
 import UIKit
 
-class DashboardViewController: UIViewController {
+class DashboardViewController: UIViewController
+{
 
-    override func viewDidLoad() {
+    @IBOutlet weak var labelCity: UITextField!
+    @IBOutlet weak var labelTemperature: UITextField!
+
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        featchWeatherInWuerzburg("Wuerzburg")
-        featchWeatherInWuerzburg("Nuernberg")
+
+        let weatherAPIConnection = WeatherAPIConnection()
+        weatherAPIConnection.featchWeatherInWuerzburg("Wuerzburg",
+                                                      completionHandler:
+                                                      {
+                                                          (data, response, error) in
+
+                                                          guard data != nil else
+                                                          {
+                                                              return
+                                                          }
+
+                                                          var jsonResult: NSDictionary!
+
+                                                          do
+                                                          {
+                                                              jsonResult = try (NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? NSDictionary)!
+                                                          } catch
+                                                          {
+                                                              print(error)
+                                                          }
+
+                                                          guard jsonResult != nil else
+                                                          {
+                                                              return
+                                                          }
+
+                                                          if let name = jsonResult.valueForKey("name") as? String
+                                                          {
+                                                              self.labelCity.text = name
+                                                          }
+
+                                                          if let temperature = jsonResult.valueForKey("main")?.valueForKey("temp") as? Float
+                                                          {
+                                                              self.labelTemperature.text = "\(temperature - 273.15)"
+                                                          }
+                                                      })
+
+//        featchWeatherInWuerzburg("Wuerzburg")
+//        featchWeatherInWuerzburg("Nuernberg")
     }
 
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-    func featchWeatherInWuerzburg(city:String)
-    {
-        let weatherURL = NSURL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=2de143494c0b295cca9337e1e96b00e0") // todo
-        let request = NSURLRequest(URL: weatherURL!)
-        let config = NSURLSessionConfiguration.defaultSessionConfiguration()
-        let session = NSURLSession(configuration: config)
-        session.dataTaskWithRequest(request,
-            completionHandler:
-            {
-                (data, resopnse, error) in
-                
-                guard data != nil else
-                {
-                    return
-                }
-                
-                var jsonResult:NSDictionary!
-                
-                do
-                {
-                    jsonResult = try (NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? NSDictionary)!
-                }
-                catch
-                {
-                    print(error)
-                }
-                
-                guard jsonResult != nil else
-                {
-                    return
-                }
-                
-                print(jsonResult)
-        }).resume()
     }
 }
