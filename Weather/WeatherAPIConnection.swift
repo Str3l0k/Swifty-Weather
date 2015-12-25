@@ -7,14 +7,41 @@ import Foundation
 
 class WeatherAPIConnection
 {
-    func featchWeatherInWuerzburg(city: String, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void)
+    static let currentWeatherApiCall = "http://api.openweathermap.org/data/2.5/weather?q="
+    static let hourlyForecastWeatherApiCall = "http://api.openweathermap.org/data/2.5/forecast?q="
+    static let dailyForecastWeatherApiCall = "http://api.openweathermap.org/data/2.5/forecast/daily?q="
+
+    func featchCurrentWeather(city: String, completionCallback: (result:NSDictionary?) -> Void)
     {
         let weatherURL = NSURL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=2de143494c0b295cca9337e1e96b00e0") // todo
         let request = NSURLRequest(URL: weatherURL!)
         let config = NSURLSessionConfiguration.defaultSessionConfiguration()
         let session = NSURLSession(configuration: config)
 
-        session.dataTaskWithRequest(request, completionHandler: completionHandler).resume()
-        // todo change so only the dictionary is return to the completion callback
+        session.dataTaskWithRequest(request,
+                                    completionHandler:
+                                    {
+                                        (data, response, error) in
+                                        completionCallback(result: self.processRequestResult(data, response: response, error: error))
+                                    }).resume()
+        // todo more precise error handling is necessary, maybe add error id to callback
+    }
+
+    private func processRequestResult(data: NSData?, response: NSURLResponse?, error: NSError?) -> NSDictionary?
+    {
+        var jsonResult: NSDictionary!
+
+        do
+        {
+            jsonResult = try (NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? NSDictionary)!
+        } catch
+        {
+            print(error)
+        }
+
+        // todo remove debug output
+        print(jsonResult)
+
+        return jsonResult
     }
 }
