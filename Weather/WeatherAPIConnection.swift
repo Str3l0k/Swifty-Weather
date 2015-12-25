@@ -31,9 +31,14 @@ class WeatherAPIConnection
     {
         var jsonResult: NSDictionary!
 
+        guard data != nil && response != nil else
+        {
+            return jsonResult
+        }
+        
         do
         {
-            jsonResult = try (NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? NSDictionary)!
+            jsonResult = try (NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? NSDictionary)
         } catch
         {
             print(error)
