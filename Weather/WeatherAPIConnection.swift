@@ -11,9 +11,11 @@ class WeatherAPIConnection
     static let hourlyForecastWeatherApiCall = "http://api.openweathermap.org/data/2.5/forecast?q="
     static let dailyForecastWeatherApiCall = "http://api.openweathermap.org/data/2.5/forecast/daily?q="
 
+    static let APPLICATION_ID = "2de143494c0b295cca9337e1e96b00e0"
+
     func featchCurrentWeather(city: String, completionCallback: (result:NSDictionary?) -> Void)
     {
-        let weatherURL = NSURL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=2de143494c0b295cca9337e1e96b00e0") // todo
+        let weatherURL = NSURL(string: "\(WeatherAPIConnection.currentWeatherApiCall)\(city)&appid=\(WeatherAPIConnection.APPLICATION_ID)") // todo
         let request = NSURLRequest(URL: weatherURL!)
         let config = NSURLSessionConfiguration.defaultSessionConfiguration()
         let session = NSURLSession(configuration: config)
