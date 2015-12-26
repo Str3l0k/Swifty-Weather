@@ -65,7 +65,7 @@ class DashboardViewController: UIViewController
             {
                 dispatch_async(dispatch_get_main_queue())
                 {
-                    self.labelWeatherDescription.text = weatherDescription.uppercaseString
+                    self.labelWeatherDescription.text = weatherDescription.capitalizedString
                 }
             }
         }
@@ -74,7 +74,7 @@ class DashboardViewController: UIViewController
         {
             dispatch_async(dispatch_get_main_queue())
             {
-                self.labelTemperature.text = String(format: "%.1f°", (temperature - 273.15))
+                self.labelTemperature.text = String(format: "%.1f", (temperature - 273.15))
             }
         }
     }

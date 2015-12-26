@@ -13,7 +13,7 @@ class WeatherAPIConnection
 
     static let APPLICATION_ID = "2de143494c0b295cca9337e1e96b00e0"
 
-    func featchCurrentWeather(city: String, completionCallback: (result:NSDictionary?) -> Void)
+    func featchCurrentWeather(city: String, completionCallback: (result:NSDictionary?) -> Void) // todo let completionCallback actual weather object, not raw dictionary
     {
         let weatherURL = NSURL(string: "\(WeatherAPIConnection.currentWeatherApiCall)\(city)&appid=\(WeatherAPIConnection.APPLICATION_ID)") // todo
         let request = NSURLRequest(URL: weatherURL!)

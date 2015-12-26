@@ -40,15 +40,25 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEG-yS-P6E" userLabel="Label Temperature">
-                                            <rect key="frame" x="0.0" y="117" width="600" height="72"/>
+                                            <rect key="frame" x="229" y="117" width="142.5" height="72"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqf-qC-NMN">
+                                            <rect key="frame" x="372" y="117" width="22" height="72"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="OEG-yS-P6E" firstAttribute="centerX" secondItem="lYK-a0-v2B" secondAttribute="centerX" id="1lq-Xu-QUk"/>
                                         <constraint firstItem="OEG-yS-P6E" firstAttribute="top" secondItem="oya-nO-f2Y" secondAttribute="bottom" constant="12" id="Bd3-gJ-28O"/>
                                         <constraint firstItem="OEG-yS-P6E" firstAttribute="leading" secondItem="oya-nO-f2Y" secondAttribute="leading" id="HVh-l3-AXD"/>
+                                        <constraint firstItem="oqf-qC-NMN" firstAttribute="leading" secondItem="OEG-yS-P6E" secondAttribute="trailing" id="JmK-u1-j9Q"/>
+                                        <constraint firstItem="oqf-qC-NMN" firstAttribute="height" secondItem="OEG-yS-P6E" secondAttribute="height" id="YnF-AN-Sa4"/>
+                                        <constraint firstItem="oqf-qC-NMN" firstAttribute="baseline" secondItem="OEG-yS-P6E" secondAttribute="baseline" id="afz-Gu-Nhm"/>
                                         <constraint firstItem="puP-m2-3ei" firstAttribute="centerX" secondItem="lYK-a0-v2B" secondAttribute="centerX" id="ayF-Nc-Orf"/>
                                         <constraint firstItem="oya-nO-f2Y" firstAttribute="width" secondItem="puP-m2-3ei" secondAttribute="width" id="bi8-qj-EMG"/>
                                         <constraint firstItem="puP-m2-3ei" firstAttribute="top" secondItem="lYK-a0-v2B" secondAttribute="topMargin" constant="20" id="hll-AT-F4e"/>
@@ -56,6 +66,12 @@
                                         <constraint firstItem="OEG-yS-P6E" firstAttribute="width" secondItem="oya-nO-f2Y" secondAttribute="width" id="quT-Zw-22y"/>
                                         <constraint firstItem="oya-nO-f2Y" firstAttribute="leading" secondItem="puP-m2-3ei" secondAttribute="leading" id="vfv-QP-tTt"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="HVh-l3-AXD"/>
+                                            <exclude reference="quT-Zw-22y"/>
+                                        </mask>
+                                    </variation>
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
