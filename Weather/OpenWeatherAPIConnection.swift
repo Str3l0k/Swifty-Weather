@@ -61,7 +61,7 @@ class WeatherAPIConnection
 
     private func createDailyWeatherForecast(dayCount: Int) -> NSURL?
     {
-        return OpenWeatherAPIHelper.
+        return nil
     }
 
     private func processRequestResult(data: NSData?, response: NSURLResponse?, error: NSError?) -> NSDictionary?

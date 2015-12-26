@@ -17,7 +17,7 @@ class OpenWeatherAPIHelper
         return NSURL(string: createURLString(city, applicationID: applicationID)) // todo distinguish between current, hourly and daily weather
     }
 
-    static func createDailyWeatherForecastApiCall(city: String, applicationID: String, dayCount: Int)
+    static func createDailyWeatherForecastApiCall(city: String, applicationID: String, dayCount: Int) -> NSURL?
     {
         return NSURL(string: createURLString(city, applicationID: applicationID))
     }
@@ -39,7 +39,7 @@ class OpenWeatherAPIHelper
 
     private static func createApplicationIDURLString(appID: String) -> String
     {
-        return "&appid=\(applicationID)"
+        return "&appid=\(appID)"
     }
 
     private static func createURLString(city: String, applicationID: String) -> String
