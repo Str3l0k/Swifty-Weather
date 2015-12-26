@@ -7,22 +7,33 @@ import Foundation
 
 class OpenWeatherAPIHelper
 {
-    static let currentWeatherApiCall        = "http://api.openweathermap.org/data/2.5/weather?q="
-    static let hourlyForecastWeatherApiCall = "http://api.openweathermap.org/data/2.5/forecast?q="
-    static let dailyForecastWeatherApiCall  = "http://api.openweathermap.org/data/2.5/forecast/daily?q="
+    private static let currentWeatherApiCallFormat        = "http://api.openweathermap.org/data/2.5/weather?q=%@&appid=%@"
+    private static let hourlyForecastWeatherApiCallFormat = "http://api.openweathermap.org/data/2.5/forecast?q=%@&appid=%@"
+    private static let dailyForecastWeatherApiCallFormat  = "http://api.openweathermap.org/data/2.5/forecast/daily?q=%@appid=%@&cnt=%d"
 
     // private helper
     static func createCurrentWeatherApiCall(city: String, applicationID: String) -> NSURL?
     {
-        return NSURL(string: createURLString(city, applicationID: applicationID)) // todo distinguish between current, hourly and daily weather
+        let cityURLString = createCurrentWeatherCityURLString(city, appID: applicationID)
+
+        return NSURL(string: cityURLString)
+    }
+
+    static func createHourlyWeatherForecastApiCall(city: String, applicationID: String) -> NSURL?
+    {
+        let cityURLString = createHourlyForecastCityURLString(city, appID: applicationID)
+
+        return NSURL(string: cityURLString)
     }
 
     static func createDailyWeatherForecastApiCall(city: String, applicationID: String, dayCount: Int) -> NSURL?
     {
-        return NSURL(string: createURLString(city, applicationID: applicationID))
+        let cityURLString = createDailyForecastCityURLString(city, appID: applicationID, dayCount: dayCount)
+
+        return NSURL(string: cityURLString)
     }
 
-    static func createURLSession(url: NSURL, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDataTask
+    static func createURLSession(url: NSURL, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDataTask // todo extract to different helper
     {
         let request = NSURLRequest(URL: url)
         let config  = NSURLSessionConfiguration.defaultSessionConfiguration()
@@ -32,18 +43,18 @@ class OpenWeatherAPIHelper
     }
 
     // private helper
-    private static func createCityURLString(city: String) -> String
+    private static func createCurrentWeatherCityURLString(city: String, appID: String) -> String
     {
-        return "\(OpenWeatherAPIHelper.currentWeatherApiCall)\(city)"
+        return String(format: OpenWeatherAPIHelper.currentWeatherApiCallFormat, city, appID)
     }
 
-    private static func createApplicationIDURLString(appID: String) -> String
+    private static func createHourlyForecastCityURLString(city: String, appID: String) -> String
     {
-        return "&appid=\(appID)"
+        return String(format: OpenWeatherAPIHelper.hourlyForecastWeatherApiCallFormat, city, appID)
     }
 
-    private static func createURLString(city: String, applicationID: String) -> String
+    private static func createDailyForecastCityURLString(city: String, appID: String, dayCount: Int) -> String
     {
-        return "\(createCityURLString(city))\(createApplicationIDURLString(applicationID))"
+        return String(format: OpenWeatherAPIHelper.dailyForecastWeatherApiCallFormat, city, dayCount)
     }
 }
