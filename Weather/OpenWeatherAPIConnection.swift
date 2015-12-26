@@ -45,6 +45,21 @@ class WeatherAPIConnection
 
     func fetchDailyWeatherForecast(count: Int, completionCallback: (forecast:[WeatherDay]) -> Void)
     {
+        let weatherURL = createDailyWeatherForecastURL(count)
+        print(weatherURL)
+
+        if let weatherURL = weatherURL
+        {
+            let task = OpenWeatherAPIHelper.createURLSession(weatherURL,
+                                                             completionHandler:
+                                                             {
+                                                                 (data, response, error) in
+
+                                                                 self.processRequestResult(data, response: response, error: error)
+                                                             })
+            task.resume()
+        }
+
         completionCallback(forecast: [WeatherDay()]) // todo
     }
 
@@ -59,9 +74,11 @@ class WeatherAPIConnection
                                                                 applicationID: OpenWeatherAPISession.APPLICATION_ID)
     }
 
-    private func createDailyWeatherForecast(dayCount: Int) -> NSURL?
+    private func createDailyWeatherForecastURL(dayCount: Int) -> NSURL?
     {
-        return nil
+        return OpenWeatherAPIHelper.createDailyWeatherForecastApiCall(city,
+                                                                      applicationID: OpenWeatherAPISession.APPLICATION_ID,
+                                                                      dayCount: dayCount)
     }
 
     private func processRequestResult(data: NSData?, response: NSURLResponse?, error: NSError?) -> NSDictionary?

@@ -11,12 +11,12 @@ import UIKit
 class DashboardViewController: UIViewController
 {
     // text views
-    @IBOutlet weak var labelCity: UILabel!
+    @IBOutlet weak var labelCity:               UILabel!
     @IBOutlet weak var labelWeatherDescription: UILabel!
-    @IBOutlet weak var labelTemperature: UILabel!
+    @IBOutlet weak var labelTemperature:        UILabel!
 
     // image views
-    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var backgroundImageView:     UIImageView!
 
     // api session instance
     let weatherApiSession = OpenWeatherAPISession()
@@ -34,6 +34,12 @@ class DashboardViewController: UIViewController
 
         let weatherAPIConnection = weatherApiSession.createNewOpenWeatherAPIConnection(cityName)
         weatherAPIConnection.fetchCurrentWeather(processReturnedWeatherJson)
+        weatherAPIConnection.fetchDailyWeatherForecast(10,
+                                                       completionCallback:
+                                                       {
+                                                           (forecast) in
+
+                                                       })
     }
 
     //

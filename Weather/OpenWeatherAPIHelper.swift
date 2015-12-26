@@ -9,7 +9,7 @@ class OpenWeatherAPIHelper
 {
     private static let currentWeatherApiCallFormat        = "http://api.openweathermap.org/data/2.5/weather?q=%@&appid=%@"
     private static let hourlyForecastWeatherApiCallFormat = "http://api.openweathermap.org/data/2.5/forecast?q=%@&appid=%@"
-    private static let dailyForecastWeatherApiCallFormat  = "http://api.openweathermap.org/data/2.5/forecast/daily?q=%@appid=%@&cnt=%d"
+    private static let dailyForecastWeatherApiCallFormat  = "http://api.openweathermap.org/data/2.5/forecast/daily?q=%@&appid=%@&cnt=%d"
 
     // private helper
     static func createCurrentWeatherApiCall(city: String, applicationID: String) -> NSURL?
@@ -55,6 +55,6 @@ class OpenWeatherAPIHelper
 
     private static func createDailyForecastCityURLString(city: String, appID: String, dayCount: Int) -> String
     {
-        return String(format: OpenWeatherAPIHelper.dailyForecastWeatherApiCallFormat, city, dayCount)
+        return String(format: OpenWeatherAPIHelper.dailyForecastWeatherApiCallFormat, city, appID, dayCount)
     }
 }
