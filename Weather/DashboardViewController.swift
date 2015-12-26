@@ -18,24 +18,22 @@ class DashboardViewController: UIViewController
     // image views
     @IBOutlet weak var backgroundImageView: UIImageView!
 
+    // api session instance
+    let weatherApiSession = OpenWeatherAPISession()
+
     // lifecycle
     override func viewDidLoad()
     {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
+//        backgroundImageView.image = UIImage(named: "Sunny")
+
 //        let cityName = "Nuernberg"
         let cityName = "Hof"
 
-        let weatherAPIConnection = WeatherAPIConnection()
-        weatherAPIConnection.featchCurrentWeather(cityName,
-                                                  completionCallback: processReturnedWeatherJson)
-    }
-
-    override func didReceiveMemoryWarning()
-    {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        let weatherAPIConnection = weatherApiSession.createNewOpenWeatherAPIConnection(cityName)
+        weatherAPIConnection.fetchCurrentWeather(processReturnedWeatherJson)
     }
 
     //
