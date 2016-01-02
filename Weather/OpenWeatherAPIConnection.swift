@@ -62,18 +62,16 @@ class WeatherAPIConnection
         completionCallback(forecast: [WeatherDay()]) // todo
     }
 
-
-
-    // ================
+    // ==================
     // completion handler
-    // ================
+    // ==================
     private func completionHandlerCurrentWeather(data: NSData?, response: NSURLResponse?, error: NSError?) -> Weather?
     {
         var weather: Weather?
 
         if let dictionary = self.processRequestResult(data, response: response, error: error)
         {
-            weather = self.parseWeatherFromDictionary(dictionary)
+            weather = self.parseCurrentWeatherFromDictionary(dictionary)
         }
 
         return weather
@@ -84,8 +82,7 @@ class WeatherAPIConnection
     // ================
     private func createCurrentWeatherURL() -> NSURL?
     {
-        return OpenWeatherAPIURLHelper.createCurrentWeatherApiCallURL(city,
-                                                                      applicationID: OpenWeatherAPISession.APPLICATION_ID)
+        return OpenWeatherAPIURLHelper.createCurrentWeatherApiCallURL(city, applicationID: OpenWeatherAPISession.APPLICATION_ID)
     }
 
     private func createDailyWeatherForecastURL(dayCount: Int) -> NSURL?
@@ -95,7 +92,27 @@ class WeatherAPIConnection
                                                                             dayCount: dayCount)
     }
 
-    private func parseWeatherFromDictionary(jsonDict: NSDictionary) -> Weather?
+    private func processRequestResult(data: NSData?, response: NSURLResponse?, error: NSError?) -> NSDictionary?
+    {
+        var jsonResult: NSDictionary!
+
+        guard data != nil && response != nil else
+        {
+            return jsonResult
+        }
+
+        do
+        {
+            jsonResult = try (NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? NSDictionary)
+        } catch
+        {
+            print(error)
+        }
+
+        return jsonResult
+    }
+
+    private func parseCurrentWeatherFromDictionary(jsonDict: NSDictionary) -> Weather?
     {
         var weather: Weather?
 
@@ -124,28 +141,5 @@ class WeatherAPIConnection
         }
 
         return weather
-    }
-
-    private func processRequestResult(data: NSData?, response: NSURLResponse?, error: NSError?) -> NSDictionary?
-    {
-        var jsonResult: NSDictionary!
-
-        guard data != nil && response != nil else
-        {
-            return jsonResult
-        }
-
-        do
-        {
-            jsonResult = try (NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? NSDictionary)
-        } catch
-        {
-            print(error)
-        }
-
-        // todo remove debug output
-        print(jsonResult)
-
-        return jsonResult
     }
 }

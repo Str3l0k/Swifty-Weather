@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DashboardViewController: UIViewController
+class CurrentWeatherViewController: UIViewController
 {
     // text views
     @IBOutlet weak var labelCity:               UILabel!
@@ -21,7 +21,7 @@ class DashboardViewController: UIViewController
     @IBOutlet weak var backgroundImageView:     UIImageView!
 
     // api session instance
-    let weatherApiSession = OpenWeatherAPISession()
+    let city = "Nuernberg"
 
     // lifecycle
     override func viewDidLoad()
@@ -29,21 +29,8 @@ class DashboardViewController: UIViewController
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-//        backgroundImageView.image = UIImage(named: "Sunny")
-
-
-        let cityName = "Nuernberg"
-//        let cityName = "Hof"
-
-        let weatherAPIConnection = WeatherAPIConnection(city: cityName)
+        let weatherAPIConnection = WeatherAPIConnection(city: city)
         weatherAPIConnection.fetchCurrentWeather(processReturnedWeatherJson)
-
-//        weatherAPIConnection.fetchDailyForecast(10,
-//                                                completionCallback:
-//                                                {
-//                                                    (forecast) in
-//
-//                                                })
     }
 
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?)
