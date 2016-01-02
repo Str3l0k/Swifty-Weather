@@ -12,24 +12,26 @@ struct Weather
     let timestamp:   Int
 
     // actual information
-    let temperatue:  Float
+    let temperature: Float
     let pressure:    Int
     let humidity:    Int
 
     // text information
+    let city:        String
     let name:        String
     let description: String
 
     // constructor
-    init(id: Int, timestamp: Int, temperature: Float, pressure: Int, humidity: Int, name: String, description: String)
+    init(id: Int, timestamp: Int, temperature: Float, pressure: Int, humidity: Int, city: String, name: String, description: String)
     {
         self.id = id
         self.timestamp = timestamp
 
-        self.temperatue = temperature
+        self.temperature = temperature
         self.pressure = pressure
         self.humidity = humidity
 
+        self.city = city
         self.name = name
         self.description = description
     }

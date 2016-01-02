@@ -16,22 +16,9 @@ class WeatherAPIConnection
         self.city = city
     }
 
-    // public access
-    func fetchCurrentWeather(completionCallback: (result:NSDictionary?) -> Void) // todo let completionCallback actual weather object, not raw dictionary
-    {
-        if let weatherURL = createCurrentWeatherURL()
-        {
-            let task = OpenWeatherAPIURLHelper.createURLSessionTask(weatherURL,
-                                                                    completionHandler:
-                                                                    {
-                                                                        (data, response, error) in
-                                                                        completionCallback(result: self.processRequestResult(data, response: response, error: error))
-                                                                    })
-            task.resume()
-        }
-        // todo more precise error handling is necessary, maybe add error id to callback
-    }
+    // todo more precise error handling is necessary, maybe add error id to callback
 
+    // public access
     func fetchCurrentWeather(completionCallback: (weather:Weather?) -> Void)
     {
         if let weatherURL = createCurrentWeatherURL()
@@ -41,13 +28,10 @@ class WeatherAPIConnection
                                                                        {
                                                                            (data, response, error) in
 
-                                                                           var weather: Weather?
-
-                                                                           if let dictionary = self.processRequestResult(data, response: response, error: error)
-                                                                           {
-                                                                               weather = self.parseWeatherFromDictionary(dictionary)
-                                                                           }
-
+                                                                           let weather
+                                                                           = self.completionHandlerCurrentWeather(data,
+                                                                                                                  response: response,
+                                                                                                                  error: error)
                                                                            completionCallback(weather: weather)
                                                                        })
             urlTask.resume()
@@ -78,9 +62,21 @@ class WeatherAPIConnection
         completionCallback(forecast: [WeatherDay()]) // todo
     }
 
-    func parseWeatherFromDictionary(jsonDict: NSDictionary) -> Weather?
+
+
+    // ================
+    // completion handler
+    // ================
+    private func completionHandlerCurrentWeather(data: NSData?, response: NSURLResponse?, error: NSError?) -> Weather?
     {
-        return nil
+        var weather: Weather?
+
+        if let dictionary = self.processRequestResult(data, response: response, error: error)
+        {
+            weather = self.parseWeatherFromDictionary(dictionary)
+        }
+
+        return weather
     }
 
     // ================
@@ -97,6 +93,37 @@ class WeatherAPIConnection
         return OpenWeatherAPIURLHelper.createDailyWeatherForecastApiCallURL(city,
                                                                             applicationID: OpenWeatherAPISession.APPLICATION_ID,
                                                                             dayCount: dayCount)
+    }
+
+    private func parseWeatherFromDictionary(jsonDict: NSDictionary) -> Weather?
+    {
+        var weather: Weather?
+
+        // prefetch
+        let mainDictionary     = jsonDict.valueForKey("main")
+        let weatherDictionary  = jsonDict.valueForKey("weather")
+
+        // general info
+        let id                 = jsonDict.valueForKey("id") as? Int
+        let timestamp          = jsonDict.valueForKey("dt") as? Int
+
+        // actual weather
+        let temperature        = mainDictionary?.valueForKey("temp") as? Float
+        let pressure           = mainDictionary?.valueForKey("pressure") as? Int
+        let humidity           = mainDictionary?.valueForKey("humidity") as? Int
+
+        // strings
+        let weatherName        = weatherDictionary?[0]?.valueForKey("main") as? String
+        let weatherDescription = weatherDictionary?[0]?.valueForKey("description") as? String
+
+        if let id = id, timestamp = timestamp, temperature = temperature, pressure = pressure, humidity = humidity, name = weatherName, description = weatherDescription
+        {
+            weather = Weather(id: id, timestamp: timestamp,
+                              temperature: temperature, pressure: pressure, humidity: humidity,
+                              city: city, name: name, description: description)
+        }
+
+        return weather
     }
 
     private func processRequestResult(data: NSData?, response: NSURLResponse?, error: NSError?) -> NSDictionary?
