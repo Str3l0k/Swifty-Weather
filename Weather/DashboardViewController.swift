@@ -16,6 +16,8 @@ class DashboardViewController: UIViewController
     @IBOutlet weak var labelTemperature:        UILabel!
 
     // image views
+    @IBOutlet weak var blurEffectView:          UIVisualEffectView!
+    // todo manual alpha level for different weather (fog 0.7, rain 0.9, sunny 0.9)
     @IBOutlet weak var backgroundImageView:     UIImageView!
 
     // api session instance
@@ -32,10 +34,10 @@ class DashboardViewController: UIViewController
 //        let cityName = "Nuernberg"
         let cityName = "Hof"
 
-        let weatherAPIConnection = weatherApiSession.createNewOpenWeatherAPIConnection(cityName)
+        let weatherAPIConnection = WeatherAPIConnection(city: cityName)
         weatherAPIConnection.fetchCurrentWeather(processReturnedWeatherJson)
-        weatherAPIConnection.fetchDailyWeatherForecast(10,
-                                                       completionCallback:
+        weatherAPIConnection.fetchDailyForecast(10,
+                                                completionCallback:
                                                        {
                                                            (forecast) in
 

@@ -18,60 +18,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background Sunny" translatesAutoresizingMaskIntoConstraints="NO" id="nte-Ba-zrc">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_fog" translatesAutoresizingMaskIntoConstraints="NO" id="nte-Ba-zrc">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gq5-yh-16C">
+                            <visualEffectView opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gq5-yh-16C">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="lYK-a0-v2B">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="puP-m2-3ei">
-                                            <rect key="frame" x="0.0" y="28" width="600" height="48"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oya-nO-f2Y" userLabel="Label Weather description">
-                                            <rect key="frame" x="0.0" y="81" width="600" height="24"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEG-yS-P6E" userLabel="Label Temperature">
-                                            <rect key="frame" x="229" y="117" width="142.5" height="72"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                            <rect key="frame" x="0.0" y="198" width="600" height="42"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqf-qC-NMN">
-                                            <rect key="frame" x="372" y="117" width="22" height="72"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                            <rect key="frame" x="389" y="108" width="27" height="90"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="75"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="puP-m2-3ei">
+                                            <rect key="frame" x="0.0" y="28" width="600" height="50.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEG-yS-P6E" userLabel="Label Temperature">
+                                            <rect key="frame" x="212" y="108" width="177" height="90"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="75"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="OEG-yS-P6E" firstAttribute="centerX" secondItem="lYK-a0-v2B" secondAttribute="centerX" id="1lq-Xu-QUk"/>
-                                        <constraint firstItem="OEG-yS-P6E" firstAttribute="top" secondItem="oya-nO-f2Y" secondAttribute="bottom" constant="12" id="Bd3-gJ-28O"/>
-                                        <constraint firstItem="OEG-yS-P6E" firstAttribute="leading" secondItem="oya-nO-f2Y" secondAttribute="leading" id="HVh-l3-AXD"/>
+                                        <constraint firstItem="oya-nO-f2Y" firstAttribute="top" secondItem="oqf-qC-NMN" secondAttribute="bottom" id="8Tb-Sh-wPJ"/>
                                         <constraint firstItem="oqf-qC-NMN" firstAttribute="leading" secondItem="OEG-yS-P6E" secondAttribute="trailing" id="JmK-u1-j9Q"/>
                                         <constraint firstItem="oqf-qC-NMN" firstAttribute="height" secondItem="OEG-yS-P6E" secondAttribute="height" id="YnF-AN-Sa4"/>
                                         <constraint firstItem="oqf-qC-NMN" firstAttribute="baseline" secondItem="OEG-yS-P6E" secondAttribute="baseline" id="afz-Gu-Nhm"/>
                                         <constraint firstItem="puP-m2-3ei" firstAttribute="centerX" secondItem="lYK-a0-v2B" secondAttribute="centerX" id="ayF-Nc-Orf"/>
                                         <constraint firstItem="oya-nO-f2Y" firstAttribute="width" secondItem="puP-m2-3ei" secondAttribute="width" id="bi8-qj-EMG"/>
                                         <constraint firstItem="puP-m2-3ei" firstAttribute="top" secondItem="lYK-a0-v2B" secondAttribute="topMargin" constant="20" id="hll-AT-F4e"/>
-                                        <constraint firstItem="oya-nO-f2Y" firstAttribute="top" secondItem="puP-m2-3ei" secondAttribute="bottom" constant="5" id="pFq-u9-Tqa"/>
-                                        <constraint firstItem="OEG-yS-P6E" firstAttribute="width" secondItem="oya-nO-f2Y" secondAttribute="width" id="quT-Zw-22y"/>
+                                        <constraint firstItem="OEG-yS-P6E" firstAttribute="top" secondItem="puP-m2-3ei" secondAttribute="bottom" constant="30" id="sT1-cC-OoP"/>
                                         <constraint firstItem="oya-nO-f2Y" firstAttribute="leading" secondItem="puP-m2-3ei" secondAttribute="leading" id="vfv-QP-tTt"/>
                                     </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="HVh-l3-AXD"/>
-                                            <exclude reference="quT-Zw-22y"/>
-                                        </mask>
-                                    </variation>
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
@@ -91,6 +83,7 @@
                     </view>
                     <connections>
                         <outlet property="backgroundImageView" destination="nte-Ba-zrc" id="q1m-DM-0Au"/>
+                        <outlet property="blurEffectView" destination="Gq5-yh-16C" id="6pQ-Mh-zT5"/>
                         <outlet property="labelCity" destination="puP-m2-3ei" id="pPM-um-pDh"/>
                         <outlet property="labelTemperature" destination="OEG-yS-P6E" id="6Yb-Qg-V95"/>
                         <outlet property="labelWeatherDescription" destination="oya-nO-f2Y" id="hjX-yk-SGA"/>
@@ -98,10 +91,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="381" y="373"/>
+            <point key="canvasLocation" x="380" y="427"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Background Sunny" width="938" height="1458"/>
+        <image name="background_fog" width="1010" height="1620"/>
     </resources>
 </document>
