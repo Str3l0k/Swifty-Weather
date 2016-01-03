@@ -35,18 +35,33 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="75"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="widthClass=compact">
+                                            <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                        </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNW-F0-mat">
                                         <rect key="frame" x="389" y="88" width="27" height="90"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="75"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="widthClass=compact">
+                                            <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                        </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ji-Pd-6Sg">
                                         <rect key="frame" x="258" y="28" width="84.5" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                    </label>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSw-X8-cZw">
+                                        <rect key="frame" x="389" y="88" width="27" height="90"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="75"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="widthClass=compact">
+                                            <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                        </variation>
                                     </label>
                                 </subviews>
                                 <constraints>
@@ -56,11 +71,31 @@
                                     <constraint firstItem="7ji-Pd-6Sg" firstAttribute="centerX" secondItem="QXP-fy-EOD" secondAttribute="centerX" id="Pqr-Af-xSz"/>
                                     <constraint firstItem="7ji-Pd-6Sg" firstAttribute="top" secondItem="QXP-fy-EOD" secondAttribute="topMargin" constant="20" id="PrS-24-8Eu"/>
                                     <constraint firstItem="BSD-hq-igq" firstAttribute="centerX" secondItem="QXP-fy-EOD" secondAttribute="centerX" id="TZz-jv-6ia"/>
+                                    <constraint firstItem="BSD-hq-igq" firstAttribute="leading" secondItem="hSw-X8-cZw" secondAttribute="trailing" id="U95-6v-Vgk"/>
+                                    <constraint firstItem="hSw-X8-cZw" firstAttribute="baseline" secondItem="BSD-hq-igq" secondAttribute="baseline" id="Vxf-Z2-pgt"/>
                                     <constraint firstItem="jNW-F0-mat" firstAttribute="height" secondItem="BSD-hq-igq" secondAttribute="height" id="XyN-Lv-n3K"/>
                                     <constraint firstItem="jNW-F0-mat" firstAttribute="leading" secondItem="BSD-hq-igq" secondAttribute="trailing" id="dSY-Qh-skg"/>
                                     <constraint firstItem="PRf-XY-NBj" firstAttribute="leading" secondItem="7ji-Pd-6Sg" secondAttribute="leading" id="k2v-4y-FI0"/>
                                     <constraint firstItem="jNW-F0-mat" firstAttribute="baseline" secondItem="BSD-hq-igq" secondAttribute="baseline" id="zGP-dN-mBo"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="hSw-X8-cZw"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="Vxf-Z2-pgt"/>
+                                        <exclude reference="U95-6v-Vgk"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="hSw-X8-cZw"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="Vxf-Z2-pgt"/>
+                                        <include reference="U95-6v-Vgk"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -80,6 +115,7 @@
                         <outlet property="labelCity" destination="7ji-Pd-6Sg" id="BIf-PS-wHw"/>
                         <outlet property="labelTemperature" destination="BSD-hq-igq" id="vpE-WY-uvm"/>
                         <outlet property="labelWeatherDescription" destination="PRf-XY-NBj" id="kpR-rH-iYO"/>
+                        <outlet property="minusLabel" destination="hSw-X8-cZw" id="KAy-1s-KdY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
