@@ -15,9 +15,7 @@ class CurrentWeatherViewController: UIViewController
     @IBOutlet weak var labelWeatherDescription: UILabel!
     @IBOutlet weak var labelTemperature:        UILabel!
 
-    // image views
-    @IBOutlet weak var blurEffectView:          UIVisualEffectView!
-    // todo manual alpha level for different weather (fog 0.7, rain 0.9, sunny 0.9)
+    //background image
     @IBOutlet weak var backgroundImageView:     UIImageView!
 
     // api session instance
@@ -48,8 +46,7 @@ class CurrentWeatherViewController: UIViewController
                                   options: UIViewAnimationOptions.TransitionCrossDissolve,
                                   animations:
                                   {
-                                      self.backgroundImageView.image = UIImage(named: "Background Sunny")
-                                      self.blurEffectView.alpha = 0.9
+                                      self.backgroundImageView.image = UIImage(named: "background_sunny_blurry")
                                   },
                                   completion: nil
         )
