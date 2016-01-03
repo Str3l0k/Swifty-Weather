@@ -13,12 +13,13 @@ class CurrentWeatherViewController: UIViewController
     // text views
     @IBOutlet weak var labelCity:               UILabel!
     @IBOutlet weak var labelWeatherDescription: UILabel!
+    @IBOutlet weak var minusLabel: UILabel!
     @IBOutlet weak var labelTemperature:        UILabel!
 
     //background image
     @IBOutlet weak var backgroundImageView:     UIImageView!
 
-    // api session instance
+    // current city
     let city = "Nuernberg"
 
     // lifecycle
@@ -38,15 +39,28 @@ class CurrentWeatherViewController: UIViewController
         changeBackgroundImage()
     }
 
-
+    var counter = 0;
     private func changeBackgroundImage()
     {
+        var image:String?
+        
+        if(counter % 2 == 0)
+        {
+            image = "background_sunny_blurry"
+        }
+        else
+        {
+            image = "background_fog_blurry"
+        }
+        
+        counter += 1
+        
         UIView.transitionWithView(self.backgroundImageView,
                                   duration: 1,
                                   options: UIViewAnimationOptions.TransitionCrossDissolve,
                                   animations:
                                   {
-                                      self.backgroundImageView.image = UIImage(named: "background_sunny_blurry")
+                                      self.backgroundImageView.image = UIImage(named: image!)
                                   },
                                   completion: nil
         )
@@ -59,12 +73,17 @@ class CurrentWeatherViewController: UIViewController
         {
             return
         }
+        
+        let normalTemperature = weather!.temperature
+        let absTemperature = abs(normalTemperature - 273.15)
 
         dispatch_async(dispatch_get_main_queue())
         {
             self.labelCity.text = weather!.city
             self.labelWeatherDescription.text = weather!.description.capitalizedString
-            self.labelTemperature.text = String(format: "%.1f", (weather!.temperature - 273.15))
+            self.labelTemperature.text = String(format: "%.1f", absTemperature)
+            self.minusLabel.hidden = normalTemperature < 0
+            // todo, if negative temperature, minus sign should be seperate label to maintain centered temperature number
         }
     }
 }
