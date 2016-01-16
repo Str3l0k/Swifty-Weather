@@ -69,20 +69,20 @@ class CurrentWeatherViewController: UIViewController
     //
     private func processReturnedWeatherJson(weather: Weather?)
     {
-        guard weather != nil else
+        guard let weather = weather else
         {
             return
         }
 
         print(weather)
 
-        let normalTemperature = weather!.temperature - 273.15
+        let normalTemperature = weather.temperature - 273.15
         let absTemperature    = abs(normalTemperature)
 
         dispatch_async(dispatch_get_main_queue())
         {
-            self.labelCity.text = weather!.city
-            self.labelWeatherDescription.text = weather!.description.capitalizedString
+            self.labelCity.text = weather.city
+            self.labelWeatherDescription.text = weather.description.capitalizedString
             self.labelTemperature.text = String(format: "%.1f", absTemperature)
             self.minusLabel.hidden = normalTemperature >= 0
         }
