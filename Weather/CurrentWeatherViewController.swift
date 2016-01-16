@@ -13,14 +13,14 @@ class CurrentWeatherViewController: UIViewController
     // text views
     @IBOutlet weak var labelCity:               UILabel!
     @IBOutlet weak var labelWeatherDescription: UILabel!
-    @IBOutlet weak var minusLabel: UILabel!
+    @IBOutlet weak var minusLabel:              UILabel!
     @IBOutlet weak var labelTemperature:        UILabel!
 
     //background image
     @IBOutlet weak var backgroundImageView:     UIImageView!
 
     // current city
-    let city = "Nuernberg"
+    let city = "Wuerzburg"
 
     // lifecycle
     override func viewDidLoad()
@@ -46,7 +46,7 @@ class CurrentWeatherViewController: UIViewController
         
         if(counter % 2 == 0)
         {
-            image = "background_sunny_blurry"
+            image = "background_rain_blurry"
         }
         else
         {
@@ -73,17 +73,18 @@ class CurrentWeatherViewController: UIViewController
         {
             return
         }
-        
-        let normalTemperature = weather!.temperature
-        let absTemperature = abs(normalTemperature - 273.15)
+
+        print(weather)
+
+        let normalTemperature = weather!.temperature - 273.15
+        let absTemperature    = abs(normalTemperature)
 
         dispatch_async(dispatch_get_main_queue())
         {
             self.labelCity.text = weather!.city
             self.labelWeatherDescription.text = weather!.description.capitalizedString
             self.labelTemperature.text = String(format: "%.1f", absTemperature)
-            self.minusLabel.hidden = normalTemperature < 0
-            // todo, if negative temperature, minus sign should be seperate label to maintain centered temperature number
+            self.minusLabel.hidden = normalTemperature >= 0
         }
     }
 }

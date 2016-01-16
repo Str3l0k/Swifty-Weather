@@ -55,16 +55,16 @@ class WeatherAPIConnection
                                                                         (data, response, error) in
 
                                                                         self.processRequestResult(data, response: response, error: error)
+
+                                                                        completionCallback(forecast: [WeatherDay()]) // todo
                                                                     })
             task.resume()
         }
-
-        completionCallback(forecast: [WeatherDay()]) // todo
     }
 
-    // ==================
+    // ====================
     // completion handler
-    // ==================
+    // ====================
     private func completionHandlerCurrentWeather(data: NSData?, response: NSURLResponse?, error: NSError?) -> Weather?
     {
         var weather: Weather?
@@ -121,7 +121,7 @@ class WeatherAPIConnection
         let weatherDictionary  = jsonDict.valueForKey("weather")
 
         // general info
-        let id                 = jsonDict.valueForKey("id") as? Int
+        let id                 = weatherDictionary?[0]?.valueForKey("id") as? Int
         let timestamp          = jsonDict.valueForKey("dt") as? Int
 
         // actual weather
