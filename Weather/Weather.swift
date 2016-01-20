@@ -12,27 +12,24 @@ struct Weather
     let timestamp:   Int
 
     // actual information
-    let temperature: Float
-    let pressure:    Int
-    let humidity:    Int
+    var temperature = 0.0
+    var pressure    = 0
+    var humidity    = 0
+
+    // optional information
+    var sunrise:     NSDate?
+    var sunset:      NSDate?
+    var wind:        Wind?
 
     // text information
-    let city:        String
-    let name:        String
-    let description: String
+    var city:        String?
+    var name:        String?
+    var description: String?
 
     // constructor
-    init(id: Int, timestamp: Int, temperature: Float, pressure: Int, humidity: Int, city: String, name: String, description: String)
+    init(id: Int, timestamp: Int)
     {
         self.id = id
         self.timestamp = timestamp
-
-        self.temperature = temperature
-        self.pressure = pressure
-        self.humidity = humidity
-
-        self.city = city
-        self.name = name
-        self.description = description
     }
 }

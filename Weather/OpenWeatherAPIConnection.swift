@@ -116,28 +116,101 @@ class WeatherAPIConnection
     {
         var weather: Weather?
 
-        // prefetch
-        let mainDictionary     = jsonDict.valueForKey("main")
-        let weatherDictionary  = jsonDict.valueForKey("weather")
+        // prefetch sub dictionaries
+        let mainDictionary    = jsonDict.valueForKey("main")
+        let weatherDictionary = jsonDict.valueForKey("weather")
+        let windDictionary    = jsonDict.valueForKey("wind")
+        let sysDictionary     = jsonDict.valueForKey("sys")
+//
+//        guard let _ = mainDictionary, _ = weatherDictionary, _ = sysDictionary, _ = windDictionary else
+//        {
+//            return nil
+//        }
+
+        guard weatherDictionary?.count > 0 else
+        {
+            return nil
+        }
 
         // general info
-        let id                 = weatherDictionary?[0]?.valueForKey("id") as? Int
-        let timestamp          = jsonDict.valueForKey("dt") as? Int
+        let id        = weatherDictionary?[0]?.valueForKey("id") as? Int
+        let timestamp = jsonDict.valueForKey("dt") as? Int
+
+        guard let _ = id, _ = timestamp else
+        {
+            return nil
+        }
 
         // actual weather
-        let temperature        = mainDictionary?.valueForKey("temp") as? Float
-        let pressure           = mainDictionary?.valueForKey("pressure") as? Int
-        let humidity           = mainDictionary?.valueForKey("humidity") as? Int
+        let temperature = mainDictionary?.valueForKey("temp") as? Float
+        let pressure    = mainDictionary?.valueForKey("pressure") as? Int
+        let humidity    = mainDictionary?.valueForKey("humidity") as? Int
+
+        // additional information
+        let sunrise     = sysDictionary?.valueForKey("sunrise") as? Int
+        let sunset      = sysDictionary?.valueForKey("sunset") as? Int
+
+        var wind: Wind?
+
+        let windDirection = windDictionary?.valueForKey("deg") as? Int
+        let windSpeed     = windDictionary?.valueForKey("speed") as? Float
+
+        if let windSpeed = windSpeed
+        {
+            if let windDirection = windDirection
+            {
+                wind = Wind(directionDegrees: windDirection, speed: windSpeed)
+            }
+            else
+            {
+                wind = Wind(directionDegrees: -1, speed: windSpeed)
+            }
+        }
+
+        var sunriseDate: NSDate?
+        var sunsetDate:  NSDate?
+
+        if let sunrise = sunrise, sunset = sunset
+        {
+            sunriseDate = NSDate(timeIntervalSince1970: NSTimeInterval(sunrise))
+            sunsetDate = NSDate(timeIntervalSince1970: NSTimeInterval(sunset))
+        }
 
         // strings
         let weatherName        = weatherDictionary?[0]?.valueForKey("main") as? String
         let weatherDescription = weatherDictionary?[0]?.valueForKey("description") as? String
+        let city               = jsonDict.valueForKey("name") as? String
 
-        if let id = id, timestamp = timestamp, temperature = temperature, pressure = pressure, humidity = humidity, name = weatherName, description = weatherDescription
+        // create weather object
+        if let id = id, timestamp = timestamp
         {
-            weather = Weather(id: id, timestamp: timestamp,
-                              temperature: temperature, pressure: pressure, humidity: humidity,
-                              city: city, name: name, description: description)
+            weather = Weather(id: id, timestamp: timestamp)
+        }
+
+        // set data
+        if let temperature = temperature, pressure = pressure, humidity = humidity
+        {
+            weather?.temperature = Double(temperature)
+            weather?.pressure = pressure
+            weather?.humidity = humidity
+        }
+
+        if let sunrise = sunriseDate, sunset = sunsetDate
+        {
+            weather?.sunrise = sunrise
+            weather?.sunset = sunset
+        }
+
+        if let name = weatherName, description = weatherDescription, city = city
+        {
+            weather?.name = name
+            weather?.description = description
+            weather?.city = city
+        }
+
+        if let wind = wind
+        {
+            weather?.wind = wind
         }
 
         return weather
