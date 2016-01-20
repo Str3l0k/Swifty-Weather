@@ -10,6 +10,9 @@
 		3F9BE9291C4A80B500DF2CAE /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9BE9281C4A80B500DF2CAE /* UserDefaultsHelper.swift */; };
 		3F9BE92B1C4A842400DF2CAE /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9BE92A1C4A842400DF2CAE /* Settings.swift */; };
 		3F9BE92D1C4A8BBF00DF2CAE /* TempUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9BE92C1C4A8BBF00DF2CAE /* TempUnit.swift */; };
+		3F9BE92F1C4A902700DF2CAE /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F9BE92E1C4A902700DF2CAE /* Settings.storyboard */; };
+		3F9BE9311C4A965400DF2CAE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9BE9301C4A965400DF2CAE /* SettingsViewController.swift */; };
+		3F9BE9331C4FB87800DF2CAE /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9BE9321C4FB87800DF2CAE /* SettingsTableViewController.swift */; };
 		4C10407AE2E79994F60B4A93 /* Wind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C104B3EEABB12BE866B2154 /* Wind.swift */; };
 		4C104118CAA1E61F2B4D8BA9 /* OpenWeatherAPISession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1041D43A0586C2D95A832A /* OpenWeatherAPISession.swift */; };
 		4C10419A8AF437826E9D10E3 /* OpenWeatherAPIConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C104EE66D9B5068A4F6C0C2 /* OpenWeatherAPIConnection.swift */; };
@@ -27,6 +30,9 @@
 		3F9BE9281C4A80B500DF2CAE /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
 		3F9BE92A1C4A842400DF2CAE /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		3F9BE92C1C4A8BBF00DF2CAE /* TempUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempUnit.swift; sourceTree = "<group>"; };
+		3F9BE92E1C4A902700DF2CAE /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Settings.storyboard; path = Weather/Settings.storyboard; sourceTree = SOURCE_ROOT; };
+		3F9BE9301C4A965400DF2CAE /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		3F9BE9321C4FB87800DF2CAE /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		4C1041D43A0586C2D95A832A /* OpenWeatherAPISession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenWeatherAPISession.swift; sourceTree = "<group>"; };
 		4C10445B49221AD9B6431847 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		4C1044EBF72F8C05247FD18D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Weather/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
@@ -92,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				4C1040AD225CAE5A7DBE1C7B /* Main.storyboard */,
+				3F9BE92E1C4A902700DF2CAE /* Settings.storyboard */,
 			);
 			path = res;
 			sourceTree = "<group>";
@@ -167,6 +174,8 @@
 			isa = PBXGroup;
 			children = (
 				968278EC1C26EB5100460D1D /* CurrentWeatherViewController.swift */,
+				3F9BE9301C4A965400DF2CAE /* SettingsViewController.swift */,
+				3F9BE9321C4FB87800DF2CAE /* SettingsTableViewController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -229,6 +238,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F9BE92F1C4A902700DF2CAE /* Settings.storyboard in Resources */,
 				96601BBB1C39817800B6C541 /* Assets.xcassets in Resources */,
 				4C104C485D6CBB2C6298EADA /* Main.storyboard in Resources */,
 			);
@@ -247,10 +257,12 @@
 				4C10435896A9961EB81A74B3 /* Weather.swift in Sources */,
 				4C10407AE2E79994F60B4A93 /* Wind.swift in Sources */,
 				4C1042B18F116875802420DC /* WeatherDay.swift in Sources */,
+				3F9BE9331C4FB87800DF2CAE /* SettingsTableViewController.swift in Sources */,
 				4C104118CAA1E61F2B4D8BA9 /* OpenWeatherAPISession.swift in Sources */,
 				3F9BE92D1C4A8BBF00DF2CAE /* TempUnit.swift in Sources */,
 				4C10419A8AF437826E9D10E3 /* OpenWeatherAPIConnection.swift in Sources */,
 				4C10434668C23144B397A475 /* OpenWeatherAPIURLHelper.swift in Sources */,
+				3F9BE9311C4A965400DF2CAE /* SettingsViewController.swift in Sources */,
 				3F9BE92B1C4A842400DF2CAE /* Settings.swift in Sources */,
 				4C10433E3A9A97E50F4B22A9 /* WeatherResourcesHelper.swift in Sources */,
 			);

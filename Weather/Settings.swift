@@ -28,6 +28,6 @@ class Settings {
                 return tempUnit
             }
         }
-        return TempUnit.None
+        return TempUnit.Celsius
     }
 }

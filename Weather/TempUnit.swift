@@ -10,8 +10,7 @@ import Foundation
 
 public enum TempUnit : String {
     case Fahrenheit = "FAHRENHEIT"
-    case Celcius = "CELCIUS"
-    case None = "NONE"
+    case Celsius = "CELSIUS"
     public init?(raw: String) {
         self.init(rawValue: raw)
     }
