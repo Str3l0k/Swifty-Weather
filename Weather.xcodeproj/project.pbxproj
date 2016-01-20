@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F10A9CC1C4FCF7800D10D6A /* ReloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F10A9CB1C4FCF7800D10D6A /* ReloadViewController.swift */; };
+		3F10A9CE1C4FCF8500D10D6A /* SendReloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F10A9CD1C4FCF8500D10D6A /* SendReloadViewController.swift */; };
 		3F9BE9291C4A80B500DF2CAE /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9BE9281C4A80B500DF2CAE /* UserDefaultsHelper.swift */; };
 		3F9BE92B1C4A842400DF2CAE /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9BE92A1C4A842400DF2CAE /* Settings.swift */; };
 		3F9BE92D1C4A8BBF00DF2CAE /* TempUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9BE92C1C4A8BBF00DF2CAE /* TempUnit.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F10A9CB1C4FCF7800D10D6A /* ReloadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReloadViewController.swift; sourceTree = "<group>"; };
+		3F10A9CD1C4FCF8500D10D6A /* SendReloadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendReloadViewController.swift; sourceTree = "<group>"; };
 		3F9BE9281C4A80B500DF2CAE /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
 		3F9BE92A1C4A842400DF2CAE /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		3F9BE92C1C4A8BBF00DF2CAE /* TempUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempUnit.swift; sourceTree = "<group>"; };
@@ -59,6 +63,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F10A9CA1C4FCF6400D10D6A /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				3F10A9CB1C4FCF7800D10D6A /* ReloadViewController.swift */,
+				3F10A9CD1C4FCF8500D10D6A /* SendReloadViewController.swift */,
+			);
+			name = Protocol;
+			sourceTree = "<group>";
+		};
 		4C1044AD942EDD5926FD3991 /* helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +186,7 @@
 		96EF79251C28473B0031F696 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				3F10A9CA1C4FCF6400D10D6A /* Protocol */,
 				968278EC1C26EB5100460D1D /* CurrentWeatherViewController.swift */,
 				3F9BE9301C4A965400DF2CAE /* SettingsViewController.swift */,
 				3F9BE9321C4FB87800DF2CAE /* SettingsTableViewController.swift */,
@@ -255,10 +269,12 @@
 				968278ED1C26EB5100460D1D /* CurrentWeatherViewController.swift in Sources */,
 				968278EB1C26EB5100460D1D /* AppDelegate.swift in Sources */,
 				4C10435896A9961EB81A74B3 /* Weather.swift in Sources */,
+				3F10A9CC1C4FCF7800D10D6A /* ReloadViewController.swift in Sources */,
 				4C10407AE2E79994F60B4A93 /* Wind.swift in Sources */,
 				4C1042B18F116875802420DC /* WeatherDay.swift in Sources */,
 				3F9BE9331C4FB87800DF2CAE /* SettingsTableViewController.swift in Sources */,
 				4C104118CAA1E61F2B4D8BA9 /* OpenWeatherAPISession.swift in Sources */,
+				3F10A9CE1C4FCF8500D10D6A /* SendReloadViewController.swift in Sources */,
 				3F9BE92D1C4A8BBF00DF2CAE /* TempUnit.swift in Sources */,
 				4C10419A8AF437826E9D10E3 /* OpenWeatherAPIConnection.swift in Sources */,
 				4C10434668C23144B397A475 /* OpenWeatherAPIURLHelper.swift in Sources */,

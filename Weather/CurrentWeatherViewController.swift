@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CurrentWeatherViewController: UIViewController
+class CurrentWeatherViewController: UIViewController, ReloadViewController
 {
     // text views
     @IBOutlet weak var labelCity:               UILabel!
@@ -23,14 +23,21 @@ class CurrentWeatherViewController: UIViewController
     @IBOutlet weak var backgroundImageView:     UIImageView!
 
     // current city
-    let city = "Wuerzburg"
+    var city = "Wuerzburg"
 
     // lifecycle
     override func viewDidLoad()
     {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
+        let temp = Settings.getCity();
+        if temp != nil && !temp!.isEmpty {
+            city = temp!
+        }
+        loadWeather()
+    }
+    
+    func loadWeather(){
         let weatherAPIConnection = WeatherAPIConnection(city: city)
         weatherAPIConnection.fetchCurrentWeather(processReturnedWeatherJson)
     }
@@ -79,7 +86,12 @@ class CurrentWeatherViewController: UIViewController
 
         print(weather)
 
-        let normalTemperature = Double(weather.temperature) - 273.15
+        var normalTemperature:Double = 0
+        if Settings.getTempUnit() == TempUnit.Fahrenheit{
+            normalTemperature = Double(weather.temperature)
+        }else{
+            normalTemperature = Double(weather.temperature) - 273.15
+        }
         let absTemperature    = abs(normalTemperature)
 
         dispatch_async(dispatch_get_main_queue())
@@ -101,5 +113,18 @@ class CurrentWeatherViewController: UIViewController
             = dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: NSTimeInterval(weather.timestamp)))
             self.updateLabel.text = String(format: "Last update: %@", formattedDate)
         }
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let controller = segue.destinationViewController as? SendReloadViewController{
+            controller.setReloadViewController(self)
+        }
+    }
+    
+    func reload() {
+        let temp = Settings.getCity();
+        if temp != nil {
+            city = temp!
+        }
+        loadWeather()
     }
 }

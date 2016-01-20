@@ -9,7 +9,9 @@
 import Foundation
 import UIKit
 
-public class SettingsViewController : UIViewController, UIToolbarDelegate {
+
+
+public class SettingsViewController : UIViewController, UIToolbarDelegate, SendReloadViewController {
     var childViewController:SettingsTableViewController? = nil;
     
     @IBOutlet weak var toolbar: UIToolbar!
@@ -22,8 +24,12 @@ public class SettingsViewController : UIViewController, UIToolbarDelegate {
             return;
         }
         childViewController!.saveButtonPressed(sender);
+        if let reload = sourceViewController{
+            reload.reload()
+        }
+        self.dismissViewControllerAnimated(true, completion: nil);
     }
-    
+    var sourceViewController:ReloadViewController?
     public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let segName = segue.identifier
         if segName == "SettingsTableViewControllerSegue"{
@@ -33,6 +39,9 @@ public class SettingsViewController : UIViewController, UIToolbarDelegate {
     
     public func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
         return UIBarPosition.TopAttached;
+    }
+    func setReloadViewController(controller: ReloadViewController) {
+        sourceViewController = controller;
     }
 }
 

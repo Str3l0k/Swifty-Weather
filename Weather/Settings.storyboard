@@ -9,7 +9,7 @@
         <!--Settings View Controller-->
         <scene sceneID="NZp-HX-ja3">
             <objects>
-                <viewController id="MdB-ya-COM" customClass="SettingsViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsViewController" id="MdB-ya-COM" customClass="SettingsViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UAO-2d-C0U"/>
                         <viewControllerLayoutGuide type="bottom" id="0Dm-nq-3FY"/>
