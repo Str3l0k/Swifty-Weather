@@ -18,7 +18,7 @@ class CurrentWeatherViewController: UIViewController
     @IBOutlet weak var humidityLabel:           UILabel!
     @IBOutlet weak var pressureLabel:           UILabel!
     @IBOutlet weak var updateLabel:             UILabel!
-    
+
     //background image
     @IBOutlet weak var backgroundImageView:     UIImageView!
 

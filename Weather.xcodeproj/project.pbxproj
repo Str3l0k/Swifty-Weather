@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F9BE9291C4A80B500DF2CAE /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9BE9281C4A80B500DF2CAE /* UserDefaultsHelper.swift */; };
+		3F9BE92B1C4A842400DF2CAE /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9BE92A1C4A842400DF2CAE /* Settings.swift */; };
+		3F9BE92D1C4A8BBF00DF2CAE /* TempUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9BE92C1C4A8BBF00DF2CAE /* TempUnit.swift */; };
 		4C10407AE2E79994F60B4A93 /* Wind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C104B3EEABB12BE866B2154 /* Wind.swift */; };
 		4C104118CAA1E61F2B4D8BA9 /* OpenWeatherAPISession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1041D43A0586C2D95A832A /* OpenWeatherAPISession.swift */; };
 		4C10419A8AF437826E9D10E3 /* OpenWeatherAPIConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C104EE66D9B5068A4F6C0C2 /* OpenWeatherAPIConnection.swift */; };
@@ -21,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F9BE9281C4A80B500DF2CAE /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
+		3F9BE92A1C4A842400DF2CAE /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		3F9BE92C1C4A8BBF00DF2CAE /* TempUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempUnit.swift; sourceTree = "<group>"; };
 		4C1041D43A0586C2D95A832A /* OpenWeatherAPISession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenWeatherAPISession.swift; sourceTree = "<group>"; };
 		4C10445B49221AD9B6431847 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		4C1044EBF72F8C05247FD18D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Weather/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
@@ -104,6 +110,9 @@
 			isa = PBXGroup;
 			children = (
 				4C104B74D9C9AF93299541BF /* WeatherResourcesHelper.swift */,
+				3F9BE9281C4A80B500DF2CAE /* UserDefaultsHelper.swift */,
+				3F9BE92A1C4A842400DF2CAE /* Settings.swift */,
+				3F9BE92C1C4A8BBF00DF2CAE /* TempUnit.swift */,
 			);
 			name = helper;
 			sourceTree = "<group>";
@@ -232,14 +241,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F9BE9291C4A80B500DF2CAE /* UserDefaultsHelper.swift in Sources */,
 				968278ED1C26EB5100460D1D /* CurrentWeatherViewController.swift in Sources */,
 				968278EB1C26EB5100460D1D /* AppDelegate.swift in Sources */,
 				4C10435896A9961EB81A74B3 /* Weather.swift in Sources */,
 				4C10407AE2E79994F60B4A93 /* Wind.swift in Sources */,
 				4C1042B18F116875802420DC /* WeatherDay.swift in Sources */,
 				4C104118CAA1E61F2B4D8BA9 /* OpenWeatherAPISession.swift in Sources */,
+				3F9BE92D1C4A8BBF00DF2CAE /* TempUnit.swift in Sources */,
 				4C10419A8AF437826E9D10E3 /* OpenWeatherAPIConnection.swift in Sources */,
 				4C10434668C23144B397A475 /* OpenWeatherAPIURLHelper.swift in Sources */,
+				3F9BE92B1C4A842400DF2CAE /* Settings.swift in Sources */,
 				4C10433E3A9A97E50F4B22A9 /* WeatherResourcesHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,6 +357,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = Weather/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.fhws.Weather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -355,6 +368,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = Weather/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.fhws.Weather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
