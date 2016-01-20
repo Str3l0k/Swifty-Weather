@@ -15,6 +15,9 @@ class CurrentWeatherViewController: UIViewController
     @IBOutlet weak var labelWeatherDescription: UILabel!
     @IBOutlet weak var minusLabel:              UILabel!
     @IBOutlet weak var labelTemperature:        UILabel!
+    @IBOutlet weak var humidityLabel:           UILabel!
+    @IBOutlet weak var pressureLabel:           UILabel!
+    @IBOutlet weak var updateLabel:             UILabel!
 
     //background image
     @IBOutlet weak var backgroundImageView:     UIImageView!
@@ -42,9 +45,9 @@ class CurrentWeatherViewController: UIViewController
     var counter = 0;
     private func changeBackgroundImage()
     {
-        var image:String?
-        
-        if(counter % 2 == 0)
+        var image: String?
+
+        if (counter % 2 == 0)
         {
             image = "background_rain_blurry"
         }
@@ -52,9 +55,9 @@ class CurrentWeatherViewController: UIViewController
         {
             image = "background_fog_blurry"
         }
-        
+
         counter += 1
-        
+
         UIView.transitionWithView(self.backgroundImageView,
                                   duration: 1,
                                   options: UIViewAnimationOptions.TransitionCrossDissolve,
@@ -76,15 +79,27 @@ class CurrentWeatherViewController: UIViewController
 
         print(weather)
 
-        let normalTemperature = weather.temperature - 273.15
+        let normalTemperature = Double(weather.temperature) - 273.15
         let absTemperature    = abs(normalTemperature)
 
         dispatch_async(dispatch_get_main_queue())
         {
             self.labelCity.text = weather.city
-            self.labelWeatherDescription.text = weather.description.capitalizedString
+            self.labelWeatherDescription.text = weather.description?.capitalizedString
             self.labelTemperature.text = String(format: "%.1f", absTemperature)
             self.minusLabel.hidden = normalTemperature >= 0
+            self.pressureLabel.text = String(weather.pressure)
+            self.humidityLabel.text = String(weather.humidity)
+
+            let dateFormatter = NSDateFormatter()
+            let locale        = NSLocale.currentLocale()
+
+            dateFormatter.locale = locale
+            dateFormatter.dateFormat = "HH:mm dd.MM.YY"
+
+            let formattedDate
+            = dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: NSTimeInterval(weather.timestamp)))
+            self.updateLabel.text = String(format: "Last update: %@", formattedDate)
         }
     }
 }
