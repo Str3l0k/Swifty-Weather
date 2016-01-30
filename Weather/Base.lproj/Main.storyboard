@@ -206,6 +206,7 @@
                         <outlet property="labelWeatherDescription" destination="PRf-XY-NBj" id="kpR-rH-iYO"/>
                         <outlet property="minusLabel" destination="hSw-X8-cZw" id="KAy-1s-KdY"/>
                         <outlet property="pressureLabel" destination="r76-tW-wwD" id="e5X-Hk-pkX"/>
+                        <outlet property="tempUnitLabel" destination="jNW-F0-mat" id="Ug6-BC-Zv2"/>
                         <outlet property="updateLabel" destination="pGX-0p-K8k" id="VLe-cf-V8o"/>
                     </connections>
                 </viewController>

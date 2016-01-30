@@ -31,4 +31,15 @@ public enum TempUnit : String {
             return kelvin;
         }
     }
+    public func viewRepresentation() -> String{
+        switch self{
+        case .Kelvin:
+            return "K"
+        case .Fahrenheit:
+            return "°F"
+        case .Celsius:
+            return "°C"
+        }
+        
+    }
 }

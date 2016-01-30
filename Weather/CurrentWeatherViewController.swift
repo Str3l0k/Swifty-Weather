@@ -18,6 +18,7 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController
     @IBOutlet weak var humidityLabel:           UILabel!
     @IBOutlet weak var pressureLabel:           UILabel!
     @IBOutlet weak var updateLabel:             UILabel!
+    @IBOutlet weak var tempUnitLabel:           UILabel!
 
     //background image
     @IBOutlet weak var backgroundImageView:     UIImageView!
@@ -46,24 +47,36 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController
     {
         super.touchesEnded(touches, withEvent: event)
 
-        changeBackgroundImage()
+        //changeBackgroundImage()
     }
-
-    var counter = 0;
-    private func changeBackgroundImage()
+    private func changeBackgroundImage(condition: WeatherCondition)
     {
         var image: String?
 
-        if (counter % 2 == 0)
+        if (condition == WeatherCondition.Rain)
         {
             image = "background_rain_blurry"
         }
-        else
+        else if condition == WeatherCondition.Atmosphere
         {
             image = "background_fog_blurry"
         }
+        else if condition == WeatherCondition.Clear
+        {
+            image = "background_sunny_blurry"
+        }
+        else if condition == WeatherCondition.Clouds
+        {
+            image = "background_clouds_blurry"
+        }
+        else if condition == WeatherCondition.Snow
+        {
+            image = "background_snow_blurry"
+        }
+        else {
+            image = "background_fog_blurry"
+        }
 
-        counter += 1
 
         UIView.transitionWithView(self.backgroundImageView,
                                   duration: 1,
@@ -107,6 +120,11 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController
             let formattedDate
             = dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: NSTimeInterval(weather.timestamp)))
             self.updateLabel.text = String(format: "Last update: %@", formattedDate)
+            
+            self.tempUnitLabel?.text = Settings.getTempUnit().viewRepresentation()
+            if let condition = weather.weatherCondition{
+                self.changeBackgroundImage(condition)
+            }
         }
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
