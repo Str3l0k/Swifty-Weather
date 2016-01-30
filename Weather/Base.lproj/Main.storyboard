@@ -120,10 +120,14 @@
                                             <constraint firstAttribute="height" constant="32" id="eH6-6F-Nkq"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRb-Xs-XlS">
-                                        <rect key="frame" x="56" y="43" width="46" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRb-Xs-XlS">
+                                        <rect key="frame" x="556" y="24" width="32" height="32"/>
                                         <animations/>
-                                        <state key="normal" title="Button"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="32" id="KYk-27-H1X"/>
+                                            <constraint firstAttribute="height" constant="32" id="Zhj-ai-HoR"/>
+                                        </constraints>
+                                        <state key="normal" image="iconmonstr-gear-3-240 (1)"/>
                                         <connections>
                                             <segue destination="P6z-fE-SnM" kind="show" id="Ek8-FR-hfL"/>
                                         </connections>
@@ -142,13 +146,13 @@
                                     <constraint firstItem="7ji-Pd-6Sg" firstAttribute="centerX" secondItem="QXP-fy-EOD" secondAttribute="centerX" id="Pqr-Af-xSz"/>
                                     <constraint firstItem="7ji-Pd-6Sg" firstAttribute="top" secondItem="QXP-fy-EOD" secondAttribute="topMargin" constant="20" id="PrS-24-8Eu"/>
                                     <constraint firstItem="KzI-B1-rK5" firstAttribute="leading" secondItem="1gf-If-GNy" secondAttribute="trailing" constant="1" id="Q8k-vO-oVY"/>
-                                    <constraint firstItem="LRb-Xs-XlS" firstAttribute="top" secondItem="QXP-fy-EOD" secondAttribute="top" constant="31" id="TGJ-ec-cSP"/>
+                                    <constraint firstItem="LRb-Xs-XlS" firstAttribute="top" secondItem="QXP-fy-EOD" secondAttribute="top" constant="24" id="TGJ-ec-cSP"/>
                                     <constraint firstItem="BSD-hq-igq" firstAttribute="centerX" secondItem="QXP-fy-EOD" secondAttribute="centerX" id="TZz-jv-6ia"/>
                                     <constraint firstItem="BSD-hq-igq" firstAttribute="leading" secondItem="hSw-X8-cZw" secondAttribute="trailing" id="U95-6v-Vgk"/>
                                     <constraint firstItem="hSw-X8-cZw" firstAttribute="baseline" secondItem="BSD-hq-igq" secondAttribute="baseline" id="Vxf-Z2-pgt"/>
                                     <constraint firstItem="jNW-F0-mat" firstAttribute="height" secondItem="BSD-hq-igq" secondAttribute="height" id="XyN-Lv-n3K"/>
-                                    <constraint firstItem="LRb-Xs-XlS" firstAttribute="leading" secondItem="QXP-fy-EOD" secondAttribute="leading" constant="56" id="Yu0-Dp-v6s"/>
                                     <constraint firstItem="1gf-If-GNy" firstAttribute="centerX" secondItem="PRf-XY-NBj" secondAttribute="centerX" id="bx1-nT-Q9z"/>
+                                    <constraint firstAttribute="trailing" secondItem="LRb-Xs-XlS" secondAttribute="trailing" constant="12" id="cGl-7D-HQk"/>
                                     <constraint firstItem="jNW-F0-mat" firstAttribute="leading" secondItem="BSD-hq-igq" secondAttribute="trailing" id="dSY-Qh-skg"/>
                                     <constraint firstItem="Kdz-IR-Aoe" firstAttribute="baseline" secondItem="r76-tW-wwD" secondAttribute="baseline" id="duw-Fc-ncL"/>
                                     <constraint firstAttribute="bottom" secondItem="pGX-0p-K8k" secondAttribute="bottom" id="f0r-if-VgO"/>
@@ -221,6 +225,7 @@
     <resources>
         <image name="background_fog_blurry" width="1010" height="1620"/>
         <image name="humidity" width="72" height="72"/>
+        <image name="iconmonstr-gear-3-240 (1)" width="240" height="240"/>
         <image name="pressure_gauge" width="1200" height="1200"/>
     </resources>
 </document>

@@ -86,12 +86,7 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController
 
         print(weather)
 
-        var normalTemperature:Double = 0
-        if Settings.getTempUnit() == TempUnit.Fahrenheit{
-            normalTemperature = Double(weather.temperature)
-        }else{
-            normalTemperature = Double(weather.temperature) - 273.15
-        }
+        let normalTemperature:Double = TempUnit.convertKelvinTo(Double(weather.temperature), tempUnit: Settings.getTempUnit());
         let absTemperature    = abs(normalTemperature)
 
         dispatch_async(dispatch_get_main_queue())
@@ -122,7 +117,7 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController
     
     func reload() {
         let temp = Settings.getCity();
-        if temp != nil {
+        if temp != nil && !temp!.isEmpty {
             city = temp!
         }
         loadWeather()
