@@ -137,7 +137,7 @@
                                         </connections>
                                     </button>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9OH-IX-R1s">
-                                        <rect key="frame" x="40" y="476" width="520" height="74"/>
+                                        <rect key="frame" x="20" y="476" width="560" height="74"/>
                                         <animations/>
                                         <connections>
                                             <segue destination="K2v-QB-m9K" kind="embed" id="WGx-aJ-rqK"/>
@@ -148,7 +148,7 @@
                                 <constraints>
                                     <constraint firstItem="f6U-Ej-tDN" firstAttribute="centerY" secondItem="1gf-If-GNy" secondAttribute="centerY" id="0EU-Z3-Ap1"/>
                                     <constraint firstItem="Kdz-IR-Aoe" firstAttribute="leading" secondItem="r76-tW-wwD" secondAttribute="trailing" constant="1" id="1eU-n5-aEx"/>
-                                    <constraint firstAttribute="trailing" secondItem="9OH-IX-R1s" secondAttribute="trailing" constant="40" id="4Ew-xK-2dh"/>
+                                    <constraint firstAttribute="trailing" secondItem="9OH-IX-R1s" secondAttribute="trailing" constant="20" id="4Ew-xK-2dh"/>
                                     <constraint firstItem="v7t-2U-kfA" firstAttribute="centerY" secondItem="r76-tW-wwD" secondAttribute="centerY" id="5qO-si-5uV"/>
                                     <constraint firstItem="PRf-XY-NBj" firstAttribute="width" secondItem="7ji-Pd-6Sg" secondAttribute="width" id="DZw-mT-aPb"/>
                                     <constraint firstItem="BSD-hq-igq" firstAttribute="top" secondItem="7ji-Pd-6Sg" secondAttribute="bottom" constant="30" id="Fj3-zg-erj"/>
@@ -169,7 +169,7 @@
                                     <constraint firstItem="jNW-F0-mat" firstAttribute="leading" secondItem="BSD-hq-igq" secondAttribute="trailing" id="dSY-Qh-skg"/>
                                     <constraint firstItem="Kdz-IR-Aoe" firstAttribute="baseline" secondItem="r76-tW-wwD" secondAttribute="baseline" id="duw-Fc-ncL"/>
                                     <constraint firstAttribute="bottom" secondItem="pGX-0p-K8k" secondAttribute="bottom" id="f0r-if-VgO"/>
-                                    <constraint firstItem="9OH-IX-R1s" firstAttribute="leading" secondItem="QXP-fy-EOD" secondAttribute="leading" constant="40" id="f1I-kb-SXB"/>
+                                    <constraint firstItem="9OH-IX-R1s" firstAttribute="leading" secondItem="QXP-fy-EOD" secondAttribute="leading" constant="20" id="f1I-kb-SXB"/>
                                     <constraint firstItem="9OH-IX-R1s" firstAttribute="top" secondItem="r76-tW-wwD" secondAttribute="bottom" constant="100" id="fRN-eq-p9I"/>
                                     <constraint firstItem="r76-tW-wwD" firstAttribute="centerX" secondItem="1gf-If-GNy" secondAttribute="centerX" id="g0c-21-JaD"/>
                                     <constraint firstItem="PRf-XY-NBj" firstAttribute="leading" secondItem="7ji-Pd-6Sg" secondAttribute="leading" id="k2v-4y-FI0"/>
@@ -242,38 +242,38 @@
             <objects>
                 <tableViewController id="K2v-QB-m9K" customClass="ForeCastViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="iPv-aT-epa">
-                        <rect key="frame" x="0.0" y="0.0" width="520" height="74"/>
+                        <rect key="frame" x="0.0" y="0.0" width="560" height="74"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeatherCellIdentifier" id="EPk-kM-OD1" customClass="WeatherTableViewCell" customModule="Weather" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="520" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="560" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EPk-kM-OD1" id="CW2-sf-heg">
-                                    <rect key="frame" x="0.0" y="0.0" width="520" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="560" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18 Uhr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQZ-cD-TyR">
-                                            <rect key="frame" x="8" y="11" width="50.5" height="20.5"/>
+                                            <rect key="frame" x="8" y="11" width="49.5" height="20.5"/>
                                             <animations/>
                                             <accessibility key="accessibilityConfiguration" label="I"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="23°C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mXy-Zq-sZM">
-                                            <rect key="frame" x="512.5" y="11" width="39.5" height="20.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23°C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mXy-Zq-sZM">
+                                            <rect key="frame" x="513.5" y="11" width="38.5" height="20.5"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="partly cloudy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMc-75-dcv">
-                                            <rect key="frame" x="292" y="11" width="100" height="20.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="partly cloudy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMc-75-dcv">
+                                            <rect key="frame" x="231" y="11" width="98" height="20.5"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
