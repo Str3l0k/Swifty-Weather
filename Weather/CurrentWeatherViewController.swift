@@ -22,6 +22,8 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController {
     //background image
     @IBOutlet weak var backgroundImageView:     UIImageView!
 
+    var foreCastViewController: ForeCastViewController?
+    
     // lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,13 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController {
     func loadWeather(){
         let weatherAPIConnection = WeatherAPIConnection(city: Settings.getCity())
         weatherAPIConnection.fetchCurrentWeather(processReturnedWeatherJson)
+        weatherAPIConnection.fetchHourlyForecast(processReturnedWeatherForecast)
+    }
+    
+    func processReturnedWeatherForecast(weather: [Weather]){
+        if let controller = foreCastViewController{
+            controller.setForecast(weather);
+        }
     }
     
     private func changeBackgroundImage(condition: WeatherCondition)
@@ -83,6 +92,9 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let controller = segue.destinationViewController as? SendReloadViewController{
             controller.setReloadViewController(self)
+        }
+        if let controller = segue.destinationViewController as? ForeCastViewController{
+            foreCastViewController = controller
         }
     }
     

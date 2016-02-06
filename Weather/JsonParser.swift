@@ -14,8 +14,6 @@ class JsonParser{
     
     static func parseWeather(jsonDict: NSDictionary) -> Weather?
     {
-        var weather: Weather?
-        
         // prefetch sub dictionaries
         let mainDictionary    = jsonDict.valueForKey("main")
         let weatherDictionary = jsonDict.valueForKey("weather")
@@ -80,39 +78,32 @@ class JsonParser{
         // create weather object
         if let id = id, timestamp = timestamp
         {
-            weather = Weather(id: id, timestamp: timestamp)
+            var weather = Weather(id: id, timestamp: timestamp)
+            if let condition = condition{
+                weather.weatherCondition = WeatherCondition.init(raw: condition)
+            }
+            
+            // set data
+            if let temperature = temperature{
+                weather.temperature = Double(temperature)
+            }
+            if let pressure = pressure{
+                weather.pressure = pressure
+            }
+            if let humidity = humidity{
+                weather.humidity = humidity
+            }
+            weather.sunrise = sunriseDate
+            weather.sunset = sunsetDate
+            
+            weather.name = weatherName
+            weather.description = weatherDescription
+            weather.city = city
+            weather.wind = wind
+            return weather
         }
         
-        if let condition = condition{
-            weather?.weatherCondition = WeatherCondition.init(raw: condition)
-        }
         
-        // set data
-        if let temperature = temperature, pressure = pressure, humidity = humidity
-        {
-            weather?.temperature = Double(temperature)
-            weather?.pressure = pressure
-            weather?.humidity = humidity
-        }
-        
-        if let sunrise = sunriseDate, sunset = sunsetDate
-        {
-            weather?.sunrise = sunrise
-            weather?.sunset = sunset
-        }
-        
-        if let name = weatherName, description = weatherDescription, city = city
-        {
-            weather?.name = name
-            weather?.description = description
-            weather?.city = city
-        }
-        
-        if let wind = wind
-        {
-            weather?.wind = wind
-        }
-        
-        return weather
+        return nil
     }
 }
