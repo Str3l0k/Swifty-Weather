@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
     </dependencies>
     <scenes>
         <!--Current Weather View Controller-->
@@ -129,7 +130,10 @@
                                         </constraints>
                                         <state key="normal" image="iconmonstr-gear-3-240 (1)"/>
                                         <connections>
-                                            <segue destination="P6z-fE-SnM" kind="show" id="Ek8-FR-hfL"/>
+                                            <segue destination="P6z-fE-SnM" kind="show" id="Ek8-FR-hfL">
+                                                <segue key="commit" inheritsFrom="parent" id="SHk-Ns-foD"/>
+                                                <segue key="preview" inheritsFrom="commit" id="jJT-tR-h8g"/>
+                                            </segue>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -170,8 +174,8 @@
                                         <exclude reference="hSw-X8-cZw"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="Vxf-Z2-pgt"/>
                                         <exclude reference="U95-6v-Vgk"/>
+                                        <exclude reference="Vxf-Z2-pgt"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
@@ -179,8 +183,8 @@
                                         <include reference="hSw-X8-cZw"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="Vxf-Z2-pgt"/>
                                         <include reference="U95-6v-Vgk"/>
+                                        <include reference="Vxf-Z2-pgt"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -229,4 +233,7 @@
         <image name="iconmonstr-gear-3-240 (1)" width="240" height="240"/>
         <image name="pressure_gauge" width="1200" height="1200"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ek8-FR-hfL"/>
+    </inferredMetricsTieBreakers>
 </document>

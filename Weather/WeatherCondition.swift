@@ -21,4 +21,21 @@ public enum WeatherCondition : String {
     public init?(raw: String) {
         self.init(rawValue: raw)
     }
+    
+    func backgroundImage()-> String{
+        switch self{
+        case .Rain:
+            return "background_rain_blurry"
+        case .Atmosphere:
+            return "background_fog_blurry"
+        case .Clear:
+            return "background_sunny_blurry"
+        case .Clouds:
+            return "background_clouds_blurry"
+        case .Snow:
+            return "background_snow_blurry"
+        default:
+            return "background_fog_blurry"
+        }
+    }
 }

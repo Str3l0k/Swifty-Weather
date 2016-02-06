@@ -8,8 +8,7 @@
 
 import UIKit
 
-class CurrentWeatherViewController: UIViewController, ReloadViewController
-{
+class CurrentWeatherViewController: UIViewController, ReloadViewController {
     // text views
     @IBOutlet weak var labelCity:               UILabel!
     @IBOutlet weak var labelWeatherDescription: UILabel!
@@ -23,77 +22,32 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController
     //background image
     @IBOutlet weak var backgroundImageView:     UIImageView!
 
-    // current city
-    var city = "Wuerzburg"
-
     // lifecycle
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        let temp = Settings.getCity();
-        if temp != nil && !temp!.isEmpty {
-            city = temp!
-        }
         loadWeather()
     }
     
     func loadWeather(){
-        let weatherAPIConnection = WeatherAPIConnection(city: city)
+        let weatherAPIConnection = WeatherAPIConnection(city: Settings.getCity())
         weatherAPIConnection.fetchCurrentWeather(processReturnedWeatherJson)
     }
-
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?)
-    {
-        super.touchesEnded(touches, withEvent: event)
-
-        //changeBackgroundImage()
-    }
+    
     private func changeBackgroundImage(condition: WeatherCondition)
     {
-        var image: String?
-
-        if (condition == WeatherCondition.Rain)
-        {
-            image = "background_rain_blurry"
-        }
-        else if condition == WeatherCondition.Atmosphere
-        {
-            image = "background_fog_blurry"
-        }
-        else if condition == WeatherCondition.Clear
-        {
-            image = "background_sunny_blurry"
-        }
-        else if condition == WeatherCondition.Clouds
-        {
-            image = "background_clouds_blurry"
-        }
-        else if condition == WeatherCondition.Snow
-        {
-            image = "background_snow_blurry"
-        }
-        else {
-            image = "background_fog_blurry"
-        }
-
-
         UIView.transitionWithView(self.backgroundImageView,
                                   duration: 1,
                                   options: UIViewAnimationOptions.TransitionCrossDissolve,
                                   animations:
                                   {
-                                      self.backgroundImageView.image = UIImage(named: image!)
+                                      self.backgroundImageView.image = UIImage(named: condition.backgroundImage())
                                   },
                                   completion: nil
         )
     }
 
-    //
-    private func processReturnedWeatherJson(weather: Weather?)
-    {
-        guard let weather = weather else
-        {
+    private func processReturnedWeatherJson(weather: Weather?) {
+        guard let weather = weather else {
             return
         }
 
@@ -102,8 +56,7 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController
         let normalTemperature:Double = TempUnit.convertKelvinTo(Double(weather.temperature), tempUnit: Settings.getTempUnit());
         let absTemperature    = abs(normalTemperature)
 
-        dispatch_async(dispatch_get_main_queue())
-        {
+        dispatch_async(dispatch_get_main_queue()) {
             self.labelCity.text = weather.city
             self.labelWeatherDescription.text = weather.description?.capitalizedString
             self.labelTemperature.text = String(format: "%.1f", absTemperature)
@@ -117,8 +70,7 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController
             dateFormatter.locale = locale
             dateFormatter.dateFormat = "HH:mm dd.MM.YY"
 
-            let formattedDate
-            = dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: NSTimeInterval(weather.timestamp)))
+            let formattedDate = dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: NSTimeInterval(weather.timestamp)))
             self.updateLabel.text = String(format: "Last update: %@", formattedDate)
             
             self.tempUnitLabel?.text = Settings.getTempUnit().viewRepresentation()
@@ -127,6 +79,7 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController
             }
         }
     }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let controller = segue.destinationViewController as? SendReloadViewController{
             controller.setReloadViewController(self)
@@ -134,10 +87,6 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController
     }
     
     func reload() {
-        let temp = Settings.getCity();
-        if temp != nil && !temp!.isEmpty {
-            city = temp!
-        }
         loadWeather()
     }
 }
