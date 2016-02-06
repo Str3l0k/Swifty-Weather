@@ -134,6 +134,7 @@ class WeatherAPIConnection
 
         // general info
         let id        = weatherDictionary?[0]?.valueForKey("id") as? Int
+        let condition = weatherDictionary?[0]?.valueForKey("main") as? String
         let timestamp = jsonDict.valueForKey("dt") as? Int
 
         guard let _ = id, _ = timestamp else
@@ -185,6 +186,10 @@ class WeatherAPIConnection
         if let id = id, timestamp = timestamp
         {
             weather = Weather(id: id, timestamp: timestamp)
+        }
+        
+        if let condition = condition{
+            weather?.weatherCondition = WeatherCondition.init(raw: condition)
         }
 
         // set data

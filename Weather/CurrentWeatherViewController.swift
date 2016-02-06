@@ -18,6 +18,7 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController
     @IBOutlet weak var humidityLabel:           UILabel!
     @IBOutlet weak var pressureLabel:           UILabel!
     @IBOutlet weak var updateLabel:             UILabel!
+    @IBOutlet weak var tempUnitLabel:           UILabel!
 
     //background image
     @IBOutlet weak var backgroundImageView:     UIImageView!
@@ -31,15 +32,13 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         let temp = Settings.getCity();
-        if temp != nil && !temp!.isEmpty
-        {
+        if temp != nil && !temp!.isEmpty {
             city = temp!
         }
         loadWeather()
     }
-
-    func loadWeather()
-    {
+    
+    func loadWeather(){
         let weatherAPIConnection = WeatherAPIConnection(city: city)
         weatherAPIConnection.fetchCurrentWeather(processReturnedWeatherJson)
     }
@@ -48,24 +47,36 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController
     {
         super.touchesEnded(touches, withEvent: event)
 
-        changeBackgroundImage()
+        //changeBackgroundImage()
     }
-
-    var counter = 0;
-    private func changeBackgroundImage()
+    private func changeBackgroundImage(condition: WeatherCondition)
     {
         var image: String?
 
-        if (counter % 2 == 0)
+        if (condition == WeatherCondition.Rain)
         {
             image = "background_rain_blurry"
         }
-        else
+        else if condition == WeatherCondition.Atmosphere
         {
             image = "background_fog_blurry"
         }
+        else if condition == WeatherCondition.Clear
+        {
+            image = "background_sunny_blurry"
+        }
+        else if condition == WeatherCondition.Clouds
+        {
+            image = "background_clouds_blurry"
+        }
+        else if condition == WeatherCondition.Snow
+        {
+            image = "background_snow_blurry"
+        }
+        else {
+            image = "background_fog_blurry"
+        }
 
-        counter += 1
 
         UIView.transitionWithView(self.backgroundImageView,
                                   duration: 1,
@@ -88,18 +99,8 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController
 
         print(weather)
 
-        var normalTemperature: Double = 0
-
-        if Settings.getTempUnit() == TempUnit.Fahrenheit
-        {
-            normalTemperature = Double(weather.temperature)
-        }
-        else
-        {
-            normalTemperature = Double(weather.temperature) - 273.15
-        }
-
-        let absTemperature = abs(normalTemperature)
+        let normalTemperature:Double = TempUnit.convertKelvinTo(Double(weather.temperature), tempUnit: Settings.getTempUnit());
+        let absTemperature    = abs(normalTemperature)
 
         dispatch_async(dispatch_get_main_queue())
         {
@@ -114,29 +115,28 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController
             let locale        = NSLocale.currentLocale()
 
             dateFormatter.locale = locale
-            dateFormatter.timeZone = NSTimeZone.localTimeZone()
             dateFormatter.dateFormat = "HH:mm dd.MM.YY"
 
             let formattedDate
             = dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: NSTimeInterval(weather.timestamp)))
             self.updateLabel.text = String(format: "Last update: %@", formattedDate)
+            
+            self.tempUnitLabel?.text = Settings.getTempUnit().viewRepresentation()
+            if let condition = weather.weatherCondition{
+                self.changeBackgroundImage(condition)
+            }
         }
     }
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
-    {
-        if let controller = segue.destinationViewController as? SendReloadViewController
-        {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let controller = segue.destinationViewController as? SendReloadViewController{
             controller.setReloadViewController(self)
         }
     }
-
-    func reload()
-    {
+    
+    func reload() {
         let temp = Settings.getCity();
-        if let _ = temp
-        {
-            self.city = temp!
+        if temp != nil && !temp!.isEmpty {
+            city = temp!
         }
         loadWeather()
     }

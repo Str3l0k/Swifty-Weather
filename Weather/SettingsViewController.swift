@@ -19,6 +19,9 @@ public class SettingsViewController : UIViewController, UIToolbarDelegate, SendR
         toolbar.delegate = self
     }
     
+    @IBAction func cancelButtonPressed(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil);
+    }
     @IBAction func saveButtonPressed(sender: AnyObject) {
         guard childViewController != nil else{
             return;

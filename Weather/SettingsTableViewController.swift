@@ -13,45 +13,51 @@ public class SettingsTableViewController : UITableViewController{
     @IBOutlet weak var CityTextField: UITextField!
     @IBOutlet weak var Celsius: UITableViewCell!
     @IBOutlet weak var Fahrenheit: UITableViewCell!
+    @IBOutlet weak var Kelvin: UITableViewCell!
     
     public override func viewDidLoad() {
         if let city = Settings.getCity(){
             CityTextField.text = city;
         }
-        if Settings.getTempUnit() == TempUnit.Fahrenheit{
+        
+        let currentTempUnit = Settings.getTempUnit()
+        if currentTempUnit == TempUnit.Fahrenheit {
             Fahrenheit.accessoryType = UITableViewCellAccessoryType.Checkmark
-        }else {
+        } else if currentTempUnit == TempUnit.Kelvin {
+            Kelvin.accessoryType = UITableViewCellAccessoryType.Checkmark
+        } else {
             Celsius.accessoryType = UITableViewCellAccessoryType.Checkmark
         }
     }
     
     public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        Fahrenheit.accessoryType = UITableViewCellAccessoryType.None
-        Celsius.accessoryType = UITableViewCellAccessoryType.None
-        if(indexPath.section == 1){
-            if(indexPath.row == 0){
-                Fahrenheit.accessoryType = UITableViewCellAccessoryType.Checkmark
-                Settings.setTempUnit(TempUnit.Fahrenheit)
-                
-            }else if(indexPath.row == 1){
-                Celsius.accessoryType = UITableViewCellAccessoryType.Checkmark
-                Settings.setTempUnit(TempUnit.Celsius)
-            }
+        if indexPath.section == 1{
+            Fahrenheit.accessoryType = UITableViewCellAccessoryType.None
+            Celsius.accessoryType = UITableViewCellAccessoryType.None
+            Kelvin.accessoryType = UITableViewCellAccessoryType.None
+            
+            let selectedCell = tableView.cellForRowAtIndexPath(indexPath)
+            
+            selectedCell?.accessoryType = UITableViewCellAccessoryType.Checkmark
         }
+        
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     public func saveButtonPressed(sender: AnyObject) {
         if Fahrenheit.accessoryType == UITableViewCellAccessoryType.Checkmark {
             Settings.setTempUnit(TempUnit.Fahrenheit)
-        }else{
+        } else if Kelvin.accessoryType == UITableViewCellAccessoryType.Checkmark {
+            Settings.setTempUnit(TempUnit.Kelvin)
+        } else {
             Settings.setTempUnit(TempUnit.Celsius)
         }
-        if let text = CityTextField.text{
+        
+        if let text = CityTextField.text {
             Settings.setCity(text);
-        }else{
+        } else {
             Settings.setCity("wuerzburg");
         }
-        
     }
+    
 }
