@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 
 class ForeCastViewController : UITableViewController{
-    private var forecast:[Weather] = [Weather]()
+    private var forecast:[Weather] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -33,6 +34,7 @@ class ForeCastViewController : UITableViewController{
         let weather = forecast[indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier("WeatherCellIdentifier") as! WeatherTableViewCell
         cell.configureCellForWeather(weather)
+        cell.backgroundColor = UIColor.clearColor()
         return cell
     }
     
@@ -44,6 +46,7 @@ class ForeCastViewController : UITableViewController{
         self.forecast = forecast;
         refreshUI()
     }
+    
     func refreshUI() {
         dispatch_async(dispatch_get_main_queue(),{
             self.tableView.reloadData()
