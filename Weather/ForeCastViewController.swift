@@ -14,6 +14,8 @@ class ForeCastViewController : UITableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableViewAutomaticDimension
         // Do any additional setup after loading the view, typically from a nib.
     }
     
