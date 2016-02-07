@@ -9,10 +9,8 @@
 import Foundation
 import UIKit
 
-
-
 public class SettingsViewController : UIViewController, UIToolbarDelegate, SendReloadViewController {
-    var childViewController:SettingsTableViewController?;
+    var childViewController:SettingsTableViewController?
     var reloadableViewController:ReloadViewController?
     @IBOutlet weak var toolbar: UIToolbar!
     

@@ -18,6 +18,7 @@ public enum WeatherCondition : String {
     case Clouds = "Clouds"
     case Extreme = "Extreme"
     case Additional = "Additional"
+    
     public init?(raw: String) {
         self.init(rawValue: raw)
     }

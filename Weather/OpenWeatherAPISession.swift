@@ -6,5 +6,6 @@
 import Foundation
 
 class OpenWeatherAPISession{
+    private init(){}
     static let APPLICATION_ID = "eeec9c1518b7d4cf79db69926ce1d088"
 }

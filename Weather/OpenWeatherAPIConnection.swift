@@ -67,7 +67,7 @@ class WeatherAPIConnection
     }
     
     private func completionHandlerHourlyWeather(data: NSData?, response: NSURLResponse?, error: NSError?) -> [Weather] {
-        var forecast = [Weather]()
+        var forecast: [Weather] = []
         let jsonDictionary = self.processRequestResult(data, response: response, error: error)
         let listDictionary = jsonDictionary?.valueForKey("list")
         if let listDictionary = listDictionary {

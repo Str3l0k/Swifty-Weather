@@ -12,18 +12,15 @@ class Settings {
     private init(){ //abstract class in swift; LOL
     }
     
-    static let CITY:String = "CITY"
-    static let TEMPERATURE_UNIT: String = "TEMPERATURE_UNIT"
+    private static let CITY:String = "CITY"
+    private static let TEMPERATURE_UNIT: String = "TEMPERATURE_UNIT"
     
     static func setCity(city: String) {
         UserDefaultsHelper.saveUserDefault(CITY, value: city)
     }
     
     static func getCity() -> String {
-        if let city = UserDefaultsHelper.loadUserDefaults(CITY) {
-            if city.isEmpty {
-                return "wuerzburg"
-            }
+        if let city = UserDefaultsHelper.loadUserDefaults(CITY) where !city.isEmpty {
             return city
         } else {
             return "wuerzburg"
@@ -37,10 +34,8 @@ class Settings {
     static func getTempUnit() -> TempUnit {
         let value: String? = UserDefaultsHelper.loadUserDefaults(TEMPERATURE_UNIT)
         
-        if let value = value {
-            if let tempUnit = TempUnit.init(raw: value) {
-                return tempUnit
-            }
+        if let value = value, tempUnit = TempUnit.init(raw: value) {
+            return tempUnit
         }
         return TempUnit.Celsius
     }

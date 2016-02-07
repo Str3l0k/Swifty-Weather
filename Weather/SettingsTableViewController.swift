@@ -15,6 +15,8 @@ public class SettingsTableViewController : UITableViewController{
     @IBOutlet weak var Fahrenheit: UITableViewCell!
     @IBOutlet weak var Kelvin: UITableViewCell!
     
+    let tempUnitSection = 1
+    
     public override func viewDidLoad() {
         CityTextField.text = Settings.getCity()
         
@@ -29,7 +31,7 @@ public class SettingsTableViewController : UITableViewController{
     }
     
     public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 1 {
+        if indexPath.section == tempUnitSection {
             Fahrenheit.accessoryType = UITableViewCellAccessoryType.None
             Celsius.accessoryType = UITableViewCellAccessoryType.None
             Kelvin.accessoryType = UITableViewCellAccessoryType.None

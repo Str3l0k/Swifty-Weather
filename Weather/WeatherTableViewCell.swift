@@ -13,6 +13,7 @@ class WeatherTableViewCell : UITableViewCell{
     @IBOutlet weak var lblTime: UILabel!
     @IBOutlet weak var lblTemperature: UILabel!
     @IBOutlet weak var lblCondition: UILabel!
+    
     func configureCellForWeather(weather: Weather){
         let dateFormatter = NSDateFormatter()
         let locale        = NSLocale.currentLocale()

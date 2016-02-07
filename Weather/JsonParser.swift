@@ -9,8 +9,7 @@
 import Foundation
 
 class JsonParser{
-    private init(){
-    }
+    private init(){}
     
     static func parseWeather(jsonDict: NSDictionary) -> Weather?
     {
