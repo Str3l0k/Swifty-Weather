@@ -16,8 +16,6 @@ class WeatherAPIConnection
         self.city = city
     }
 
-    // todo more precise error handling is necessary, maybe add error id to callback
-
     // public access
     func fetchCurrentWeather(completionCallback: (weather:Weather?) -> Void)
     {
