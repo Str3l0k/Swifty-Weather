@@ -8,24 +8,28 @@
 
 import Foundation
 
-class UserDefaultsHelper {
-    private init (){
+class UserDefaultsHelper
+{
+    private init()
+    {
     }
-    
-    static func saveUserDefault(key: String, value: String){
-        let defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        
+
+    static func saveUserDefault(key: String, value: String)
+    {
+        let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+
         defaults.setValue(value, forKey: key)
-        
+
         //synchronize the object - Important don't forget that
         defaults.synchronize()
     }
-    
-    static func loadUserDefaults(key: String) -> String? {
+
+    static func loadUserDefaults(key: String) -> String?
+    {
         //Load an Object
         //get the standardUserDefaults from the OS
         let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        
+
         return defaults.stringForKey(key)
     }
 }

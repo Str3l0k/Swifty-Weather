@@ -5,8 +5,11 @@
 
 import Foundation
 
-class OpenWeatherAPIURLHelper{
-    private init(){}
+class OpenWeatherAPIURLHelper
+{
+    private init()
+    {
+    }
     private static let currentWeatherApiCallFormat        = "http://api.openweathermap.org/data/2.5/weather?q=%@&appid=%@"
     private static let hourlyForecastWeatherApiCallFormat = "http://api.openweathermap.org/data/2.5/forecast?q=%@&appid=%@"
     private static let dailyForecastWeatherApiCallFormat  = "http://api.openweathermap.org/data/2.5/forecast/daily?q=%@&appid=%@&cnt=%d"

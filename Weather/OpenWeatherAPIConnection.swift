@@ -37,11 +37,14 @@ class WeatherAPIConnection
             urlTask.resume()
         }
     }
-    
-    func fetchHourlyForecast(completionCallback: (weatherForecast: [Weather]) -> Void){
-        let weatherURL = OpenWeatherAPIURLHelper.createHourlyWeatherForecastApiCallURL(city, applicationID: OpenWeatherAPISession.APPLICATION_ID)
-        
-        if let weatherURL = weatherURL {
+
+    func fetchHourlyForecast(completionCallback: (weatherForecast:[Weather]) -> Void)
+    {
+        let weatherURL
+        = OpenWeatherAPIURLHelper.createHourlyWeatherForecastApiCallURL(city, applicationID: OpenWeatherAPISession.APPLICATION_ID)
+
+        if let weatherURL = weatherURL
+        {
             let urlTask = OpenWeatherAPIURLHelper.createURLSessionTask(weatherURL, completionHandler: {
                 (data, response, error) in
                 let weather = self.completionHandlerHourlyWeather(data, response: response, error: error)
@@ -65,17 +68,22 @@ class WeatherAPIConnection
 
         return weather
     }
-    
-    private func completionHandlerHourlyWeather(data: NSData?, response: NSURLResponse?, error: NSError?) -> [Weather] {
+
+    private func completionHandlerHourlyWeather(data: NSData?, response: NSURLResponse?, error: NSError?) -> [Weather]
+    {
         var forecast: [Weather] = []
-        let jsonDictionary = self.processRequestResult(data, response: response, error: error)
-        let listDictionary = jsonDictionary?.valueForKey("list")
-        if let listDictionary = listDictionary {
-            for var index:Int = 0; index < listDictionary.count; ++index {
+        let jsonDictionary      = self.processRequestResult(data, response: response, error: error)
+        let listDictionary      = jsonDictionary?.valueForKey("list")
+        if let listDictionary = listDictionary
+        {
+            for var index: Int = 0; index < listDictionary.count; ++index
+            {
                 let singleWeatherDic = listDictionary[index]
-                if let weatherDic = singleWeatherDic as? NSDictionary{
+                if let weatherDic = singleWeatherDic as? NSDictionary
+                {
                     let weather = JsonParser.parseWeather(weatherDic)
-                    if let weather = weather{
+                    if let weather = weather
+                    {
                         forecast.append(weather);
                     }
                 }
@@ -107,9 +115,11 @@ class WeatherAPIConnection
             return jsonResult
         }
 
-        do {
+        do
+        {
             jsonResult = try (NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? NSDictionary)
-        } catch {
+        } catch
+        {
             print(error)
         }
 

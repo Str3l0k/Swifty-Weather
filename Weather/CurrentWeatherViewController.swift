@@ -8,7 +8,8 @@
 
 import UIKit
 
-class CurrentWeatherViewController: UIViewController, ReloadViewController {
+class CurrentWeatherViewController: UIViewController, ReloadViewController
+{
     // text views
     @IBOutlet weak var labelCity:               UILabel!
     @IBOutlet weak var labelWeatherDescription: UILabel!
@@ -23,25 +24,29 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController {
     @IBOutlet weak var backgroundImageView:     UIImageView!
 
     var foreCastViewController: ForeCastViewController?
-    
+
     // lifecycle
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         loadWeather()
     }
-    
-    func loadWeather(){
+
+    func loadWeather()
+    {
         let weatherAPIConnection = WeatherAPIConnection(city: Settings.getCity())
         weatherAPIConnection.fetchCurrentWeather(processReturnedWeatherJson)
         weatherAPIConnection.fetchHourlyForecast(processReturnedWeatherForecast)
     }
-    
-    func processReturnedWeatherForecast(weather: [Weather]){
-        if let controller = foreCastViewController{
+
+    func processReturnedWeatherForecast(weather: [Weather])
+    {
+        if let controller = foreCastViewController
+        {
             controller.setForecast(weather);
         }
     }
-    
+
     private func changeBackgroundImage(condition: WeatherCondition)
     {
         UIView.transitionWithView(self.backgroundImageView,
@@ -55,17 +60,20 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController {
         )
     }
 
-    private func processReturnedWeatherJson(weather: Weather?) {
+    private func processReturnedWeatherJson(weather: Weather?)
+    {
         guard let weather = weather else {
             return
         }
 
         print(weather)
 
-        let normalTemperature:Double = TempUnit.convertKelvinTo(Double(weather.temperature), tempUnit: Settings.getTempUnit());
-        let absTemperature    = abs(normalTemperature)
+        let normalTemperature: Double
+        = TempUnit.convertKelvinTo(Double(weather.temperature), tempUnit: Settings.getTempUnit());
+        let absTemperature = abs(normalTemperature)
 
-        dispatch_async(dispatch_get_main_queue()) {
+        dispatch_async(dispatch_get_main_queue())
+        {
             self.labelCity.text = weather.city
             self.labelWeatherDescription.text = weather.description?.capitalizedString
             self.labelTemperature.text = String(format: "%.1f", absTemperature)
@@ -79,26 +87,32 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController {
             dateFormatter.locale = locale
             dateFormatter.dateFormat = "HH:mm dd.MM.YY"
 
-            let formattedDate = dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: NSTimeInterval(weather.timestamp)))
+            let formattedDate
+            = dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: NSTimeInterval(weather.timestamp)))
             self.updateLabel.text = String(format: "Last update: %@", formattedDate)
-            
+
             self.tempUnitLabel?.text = Settings.getTempUnit().viewRepresentation()
-            if let condition = weather.weatherCondition{
+            if let condition = weather.weatherCondition
+            {
                 self.changeBackgroundImage(condition)
             }
         }
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let controller = segue.destinationViewController as? SendReloadViewController{
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if let controller = segue.destinationViewController as? SendReloadViewController
+        {
             controller.setReloadViewController(self)
         }
-        if let controller = segue.destinationViewController as? ForeCastViewController{
+        if let controller = segue.destinationViewController as? ForeCastViewController
+        {
             foreCastViewController = controller
         }
     }
-    
-    func reload() {
+
+    func reload()
+    {
         loadWeather()
     }
 }

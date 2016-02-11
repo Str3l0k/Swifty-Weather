@@ -8,33 +8,44 @@
 
 import Foundation
 
-class Settings {
-    private init(){ //abstract class in swift; LOL
+class Settings
+{
+    private init()
+    {
+        //abstract class in swift; LOL
     }
-    
-    private static let CITY:String = "CITY"
+
+    private static let CITY:             String = "CITY"
     private static let TEMPERATURE_UNIT: String = "TEMPERATURE_UNIT"
-    
-    static func setCity(city: String) {
+
+    static func setCity(city: String)
+    {
         UserDefaultsHelper.saveUserDefault(CITY, value: city)
     }
-    
-    static func getCity() -> String {
-        if let city = UserDefaultsHelper.loadUserDefaults(CITY) where !city.isEmpty {
+
+    static func getCity() -> String
+    {
+        if let city = UserDefaultsHelper.loadUserDefaults(CITY) where !city.isEmpty
+        {
             return city
-        } else {
+        }
+        else
+        {
             return "wuerzburg"
         }
     }
-    
-    static func setTempUnit(tempUnit: TempUnit) {
+
+    static func setTempUnit(tempUnit: TempUnit)
+    {
         UserDefaultsHelper.saveUserDefault(TEMPERATURE_UNIT, value: tempUnit.rawValue)
     }
-    
-    static func getTempUnit() -> TempUnit {
+
+    static func getTempUnit() -> TempUnit
+    {
         let value: String? = UserDefaultsHelper.loadUserDefaults(TEMPERATURE_UNIT)
-        
-        if let value = value, tempUnit = TempUnit.init(raw: value) {
+
+        if let value = value, tempUnit = TempUnit.init(raw: value)
+        {
             return tempUnit
         }
         return TempUnit.Celsius
