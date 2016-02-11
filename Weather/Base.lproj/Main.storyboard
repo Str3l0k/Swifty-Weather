@@ -119,12 +119,6 @@
                                             <constraint firstAttribute="height" constant="36" id="EvU-z3-mcr"/>
                                         </constraints>
                                     </imageView>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="updateLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGX-0p-K8k">
-                                        <rect key="frame" x="0.0" y="583" width="600" height="13.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pressure_gauge" translatesAutoresizingMaskIntoConstraints="NO" id="v7t-2U-kfA">
                                         <rect key="frame" x="198" y="345" width="32" height="32"/>
                                         <constraints>
@@ -151,11 +145,21 @@
                                         </connections>
                                     </button>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9OH-IX-R1s">
-                                        <rect key="frame" x="20" y="451" width="560" height="99"/>
+                                        <rect key="frame" x="20" y="451" width="560" height="124"/>
                                         <connections>
                                             <segue destination="K2v-QB-m9K" kind="embed" id="WGx-aJ-rqK"/>
                                         </connections>
                                     </containerView>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="updateLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGX-0p-K8k">
+                                        <rect key="frame" x="8" y="424" width="600" height="13.5"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                        </accessibility>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="f6U-Ej-tDN" firstAttribute="centerY" secondItem="1gf-If-GNy" secondAttribute="centerY" id="0EU-Z3-Ap1"/>
@@ -181,14 +185,12 @@
                                     <constraint firstItem="BSD-hq-igq" firstAttribute="leading" secondItem="hSw-X8-cZw" secondAttribute="trailing" id="U95-6v-Vgk"/>
                                     <constraint firstItem="hSw-X8-cZw" firstAttribute="baseline" secondItem="BSD-hq-igq" secondAttribute="baseline" id="Vxf-Z2-pgt"/>
                                     <constraint firstItem="jNW-F0-mat" firstAttribute="height" secondItem="BSD-hq-igq" secondAttribute="height" id="XyN-Lv-n3K"/>
-                                    <constraint firstAttribute="bottom" secondItem="9OH-IX-R1s" secondAttribute="bottom" constant="50" id="ZIy-Qc-0NT">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="70"/>
-                                    </constraint>
                                     <constraint firstItem="1gf-If-GNy" firstAttribute="centerX" secondItem="PRf-XY-NBj" secondAttribute="centerX" id="bx1-nT-Q9z"/>
                                     <constraint firstAttribute="trailing" secondItem="LRb-Xs-XlS" secondAttribute="trailing" constant="12" id="cGl-7D-HQk">
                                         <variation key="heightClass=regular-widthClass=regular" constant="40"/>
                                     </constraint>
                                     <constraint firstItem="jNW-F0-mat" firstAttribute="leading" secondItem="BSD-hq-igq" secondAttribute="trailing" id="dSY-Qh-skg"/>
+                                    <constraint firstAttribute="bottom" secondItem="9OH-IX-R1s" secondAttribute="bottom" constant="25" id="dhB-yK-Ls8"/>
                                     <constraint firstItem="Kdz-IR-Aoe" firstAttribute="baseline" secondItem="r76-tW-wwD" secondAttribute="baseline" id="duw-Fc-ncL"/>
                                     <constraint firstAttribute="bottom" secondItem="pGX-0p-K8k" secondAttribute="bottom" id="f0r-if-VgO"/>
                                     <constraint firstItem="9OH-IX-R1s" firstAttribute="leading" secondItem="QXP-fy-EOD" secondAttribute="leading" constant="20" id="f1I-kb-SXB">
@@ -209,8 +211,8 @@
                                         <exclude reference="hSw-X8-cZw"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="U95-6v-Vgk"/>
                                         <exclude reference="Vxf-Z2-pgt"/>
+                                        <exclude reference="U95-6v-Vgk"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
@@ -218,8 +220,8 @@
                                         <include reference="hSw-X8-cZw"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="U95-6v-Vgk"/>
                                         <include reference="Vxf-Z2-pgt"/>
+                                        <include reference="U95-6v-Vgk"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -266,7 +268,7 @@
             <objects>
                 <tableViewController id="K2v-QB-m9K" customClass="ForeCastViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="iPv-aT-epa">
-                        <rect key="frame" x="0.0" y="0.0" width="560" height="99"/>
+                        <rect key="frame" x="0.0" y="0.0" width="560" height="124"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CurrentWeatherViewController: UIViewController, ReloadViewController
+class CurrentWeatherViewController: UIViewController
 {
     @IBOutlet weak var mainView:                UIView!
 
@@ -115,7 +115,11 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController
             foreCastViewController = controller
         }
     }
+}
 
+
+extension CurrentWeatherViewController: ReloadViewController
+{
     func reload()
     {
         loadWeather()
