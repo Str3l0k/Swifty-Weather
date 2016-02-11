@@ -37,28 +37,17 @@ class WeatherAPIConnection
             urlTask.resume()
         }
     }
-
-    func fetchFiveDayHourlyForecast(completionCallback: (weatherForecast:[WeatherDay]) -> Void)
-    {
-        completionCallback(weatherForecast: [WeatherDay()]) // todo
-    }
-
-    func fetchDailyForecast(count: Int, completionCallback: (forecast:[WeatherDay]) -> Void)
-    {
-        let weatherURL = createDailyWeatherForecastURL(count)
-
-        if let weatherURL = weatherURL
-        {
-            let task = OpenWeatherAPIURLHelper.createURLSessionTask(weatherURL,
-                                                                    completionHandler:
-                                                                    {
-                                                                        (data, response, error) in
-
-                                                                        self.processRequestResult(data, response: response, error: error)
-
-                                                                        completionCallback(forecast: [WeatherDay()]) // todo
-                                                                    })
-            task.resume()
+    
+    func fetchHourlyForecast(completionCallback: (weatherForecast: [Weather]) -> Void){
+        let weatherURL = OpenWeatherAPIURLHelper.createHourlyWeatherForecastApiCallURL(city, applicationID: OpenWeatherAPISession.APPLICATION_ID)
+        
+        if let weatherURL = weatherURL {
+            let urlTask = OpenWeatherAPIURLHelper.createURLSessionTask(weatherURL, completionHandler: {
+                (data, response, error) in
+                let weather = self.completionHandlerHourlyWeather(data, response: response, error: error)
+                completionCallback(weatherForecast: weather)
+            })
+            urlTask.resume();
         }
     }
 
@@ -71,10 +60,28 @@ class WeatherAPIConnection
 
         if let dictionary = self.processRequestResult(data, response: response, error: error)
         {
-            weather = self.parseCurrentWeatherFromDictionary(dictionary)
+            weather = JsonParser.parseWeather(dictionary)
         }
 
         return weather
+    }
+    
+    private func completionHandlerHourlyWeather(data: NSData?, response: NSURLResponse?, error: NSError?) -> [Weather] {
+        var forecast: [Weather] = []
+        let jsonDictionary = self.processRequestResult(data, response: response, error: error)
+        let listDictionary = jsonDictionary?.valueForKey("list")
+        if let listDictionary = listDictionary {
+            for var index:Int = 0; index < listDictionary.count; ++index {
+                let singleWeatherDic = listDictionary[index]
+                if let weatherDic = singleWeatherDic as? NSDictionary{
+                    let weather = JsonParser.parseWeather(weatherDic)
+                    if let weather = weather{
+                        forecast.append(weather);
+                    }
+                }
+            }
+        }
+        return forecast
     }
 
     // ================
@@ -96,129 +103,17 @@ class WeatherAPIConnection
     {
         var jsonResult: NSDictionary!
 
-        guard data != nil && response != nil else
-        {
+        guard data != nil && response != nil else{
             return jsonResult
         }
 
-        do
-        {
+        do {
             jsonResult = try (NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? NSDictionary)
-        } catch
-        {
+        } catch {
             print(error)
         }
 
         return jsonResult
     }
 
-    private func parseCurrentWeatherFromDictionary(jsonDict: NSDictionary) -> Weather?
-    {
-        var weather: Weather?
-
-        // prefetch sub dictionaries
-        let mainDictionary    = jsonDict.valueForKey("main")
-        let weatherDictionary = jsonDict.valueForKey("weather")
-        let windDictionary    = jsonDict.valueForKey("wind")
-        let sysDictionary     = jsonDict.valueForKey("sys")
-//
-//        guard let _ = mainDictionary, _ = weatherDictionary, _ = sysDictionary, _ = windDictionary else
-//        {
-//            return nil
-//        }
-
-        guard weatherDictionary?.count > 0 else
-        {
-            return nil
-        }
-
-        // general info
-        let id        = weatherDictionary?[0]?.valueForKey("id") as? Int
-        let condition = weatherDictionary?[0]?.valueForKey("main") as? String
-        let timestamp = jsonDict.valueForKey("dt") as? Int
-
-        guard let _ = id, _ = timestamp else
-        {
-            return nil
-        }
-
-        // actual weather
-        let temperature = mainDictionary?.valueForKey("temp") as? Float
-        let pressure    = mainDictionary?.valueForKey("pressure") as? Int
-        let humidity    = mainDictionary?.valueForKey("humidity") as? Int
-
-        // additional information
-        let sunrise     = sysDictionary?.valueForKey("sunrise") as? Int
-        let sunset      = sysDictionary?.valueForKey("sunset") as? Int
-
-        var wind: Wind?
-
-        let windDirection = windDictionary?.valueForKey("deg") as? Int
-        let windSpeed     = windDictionary?.valueForKey("speed") as? Float
-
-        if let windSpeed = windSpeed
-        {
-            if let windDirection = windDirection
-            {
-                wind = Wind(directionDegrees: windDirection, speed: windSpeed)
-            }
-            else
-            {
-                wind = Wind(directionDegrees: -1, speed: windSpeed)
-            }
-        }
-
-        var sunriseDate: NSDate?
-        var sunsetDate:  NSDate?
-
-        if let sunrise = sunrise, sunset = sunset
-        {
-            sunriseDate = NSDate(timeIntervalSince1970: NSTimeInterval(sunrise))
-            sunsetDate = NSDate(timeIntervalSince1970: NSTimeInterval(sunset))
-        }
-
-        // strings
-        let weatherName        = weatherDictionary?[0]?.valueForKey("main") as? String
-        let weatherDescription = weatherDictionary?[0]?.valueForKey("description") as? String
-        let city               = jsonDict.valueForKey("name") as? String
-
-        // create weather object
-        if let id = id, timestamp = timestamp
-        {
-            weather = Weather(id: id, timestamp: timestamp)
-        }
-
-        if let condition = condition
-        {
-            weather?.weatherCondition = WeatherCondition.init(raw: condition)
-        }
-
-        // set data
-        if let temperature = temperature, pressure = pressure, humidity = humidity
-        {
-            weather?.temperature = Double(temperature)
-            weather?.pressure = pressure
-            weather?.humidity = humidity
-        }
-
-        if let sunrise = sunriseDate, sunset = sunsetDate
-        {
-            weather?.sunrise = sunrise
-            weather?.sunset = sunset
-        }
-
-        if let name = weatherName, description = weatherDescription, city = city
-        {
-            weather?.name = name
-            weather?.description = description
-            weather?.city = city
-        }
-
-        if let wind = wind
-        {
-            weather?.wind = wind
-        }
-
-        return weather
-    }
 }

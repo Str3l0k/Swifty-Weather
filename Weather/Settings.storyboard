@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pgi-vD-fMm">
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pgi-vD-fMm">
                                 <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <animations/>
                                 <connections>
@@ -34,7 +34,17 @@
                                             <action selector="saveButtonPressed:" destination="MdB-ya-COM" id="lQC-k6-g70"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="2HI-eg-8BR"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="kER-XQ-Iwj"/>
+                                    <barButtonItem style="plain" id="5lo-bW-22q">
+                                        <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Settings" textAlignment="center" minimumFontSize="17" id="wA7-TW-5Mq">
+                                            <rect key="frame" x="251" y="7" width="97" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="BOT-p1-APE"/>
                                     <barButtonItem systemItem="cancel" id="Xiu-FM-PMH">
                                         <connections>
                                             <action selector="cancelButtonPressed:" destination="MdB-ya-COM" id="c0H-Ak-fcN"/>
@@ -56,7 +66,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="Toolbar" destination="1bI-qi-JTd" id="9DX-Vg-z6i"/>
                         <outlet property="toolbar" destination="1bI-qi-JTd" id="MZd-tO-Lh7"/>

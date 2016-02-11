@@ -5,7 +5,7 @@
 
 import Foundation
 
-class OpenWeatherAPISession
-{
-    static let APPLICATION_ID = "44db6a862fba0b067b1930da0d769e98"
+class OpenWeatherAPISession{
+    private init(){}
+    static let APPLICATION_ID = "eeec9c1518b7d4cf79db69926ce1d088"
 }
