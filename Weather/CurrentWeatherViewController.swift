@@ -10,6 +10,7 @@ import UIKit
 
 class CurrentWeatherViewController: UIViewController
 {
+    // MARK: - view outlets
     @IBOutlet weak var mainView:                UIView!
 
     // text views
@@ -27,21 +28,22 @@ class CurrentWeatherViewController: UIViewController
 
     var foreCastViewController: ForeCastViewController?
 
-    // lifecycle
+    // MARK: - lifecycle
     override func viewDidLoad()
     {
         super.viewDidLoad()
         loadWeather()
     }
 
-    func loadWeather()
+    // MARK: - private functions
+    private func loadWeather()
     {
         let weatherAPIConnection = WeatherAPIConnection(city: Settings.getCity())
         weatherAPIConnection.fetchCurrentWeather(processReturnedWeatherJson)
         weatherAPIConnection.fetchHourlyForecast(processReturnedWeatherForecast)
     }
 
-    func processReturnedWeatherForecast(weather: [Weather])
+    private func processReturnedWeatherForecast(weather: [Weather])
     {
         if let controller = foreCastViewController
         {
@@ -104,6 +106,7 @@ class CurrentWeatherViewController: UIViewController
         }
     }
 
+    // MARK: - overwritten functions
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
         if let controller = segue.destinationViewController as? SendReloadViewControllerProtocol
@@ -117,8 +120,7 @@ class CurrentWeatherViewController: UIViewController
     }
 }
 
-// MARK Reload
-
+// MARK: - Reload protocol
 extension CurrentWeatherViewController: ReloadViewControllerProtocol
 {
     func reload()

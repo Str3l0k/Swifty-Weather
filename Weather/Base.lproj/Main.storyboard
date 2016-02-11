@@ -211,8 +211,8 @@
                                         <exclude reference="hSw-X8-cZw"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="Vxf-Z2-pgt"/>
                                         <exclude reference="U95-6v-Vgk"/>
+                                        <exclude reference="Vxf-Z2-pgt"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
@@ -220,8 +220,8 @@
                                         <include reference="hSw-X8-cZw"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="Vxf-Z2-pgt"/>
                                         <include reference="U95-6v-Vgk"/>
+                                        <include reference="Vxf-Z2-pgt"/>
                                     </mask>
                                 </variation>
                             </view>
