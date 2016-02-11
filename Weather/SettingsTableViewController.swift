@@ -23,11 +23,11 @@ public class SettingsTableViewController: UITableViewController
         CityTextField.text = Settings.getCity()
 
         let currentTempUnit = Settings.getTempUnit()
-        if currentTempUnit == TempUnit.Fahrenheit
+        if currentTempUnit == TemperatureUnit.Fahrenheit
         {
             Fahrenheit.accessoryType = UITableViewCellAccessoryType.Checkmark
         }
-        else if currentTempUnit == TempUnit.Kelvin
+        else if currentTempUnit == TemperatureUnit.Kelvin
         {
             Kelvin.accessoryType = UITableViewCellAccessoryType.Checkmark
         }
@@ -57,15 +57,15 @@ public class SettingsTableViewController: UITableViewController
     {
         if Fahrenheit.accessoryType == UITableViewCellAccessoryType.Checkmark
         {
-            Settings.setTempUnit(TempUnit.Fahrenheit)
+            Settings.setTempUnit(TemperatureUnit.Fahrenheit)
         }
         else if Kelvin.accessoryType == UITableViewCellAccessoryType.Checkmark
         {
-            Settings.setTempUnit(TempUnit.Kelvin)
+            Settings.setTempUnit(TemperatureUnit.Kelvin)
         }
         else
         {
-            Settings.setTempUnit(TempUnit.Celsius)
+            Settings.setTempUnit(TemperatureUnit.Celsius)
         }
 
         if let text = CityTextField.text

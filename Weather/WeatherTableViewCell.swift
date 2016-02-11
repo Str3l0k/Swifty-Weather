@@ -28,7 +28,7 @@ class WeatherTableViewCell: UITableViewCell
         lblTime.text = String(format: "%@:", formattedDate)
 
         let normalTemperature: Double
-        = TempUnit.convertKelvinTo(Double(weather.temperature), tempUnit: Settings.getTempUnit());
+        = TemperatureUnit.convertKelvinTo(Double(weather.temperature), tempUnit: Settings.getTempUnit());
 
 
         lblTemperature.text = String(format: "%.1f%@", normalTemperature, Settings.getTempUnit().viewRepresentation())

@@ -1,5 +1,5 @@
 //
-//  ReloadViewController.swift
+//  ReloadViewControllerProtocol.swift
 //  Weather
 //
 //  Created by student on 20.01.16.

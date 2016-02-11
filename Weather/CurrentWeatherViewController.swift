@@ -10,6 +10,8 @@ import UIKit
 
 class CurrentWeatherViewController: UIViewController, ReloadViewController
 {
+    @IBOutlet weak var mainView:                UIView!
+
     // text views
     @IBOutlet weak var labelCity:               UILabel!
     @IBOutlet weak var labelWeatherDescription: UILabel!
@@ -50,10 +52,12 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController
     private func changeBackgroundImage(condition: WeatherCondition)
     {
         UIView.transitionWithView(self.backgroundImageView,
-                                  duration: 1,
+                                  duration: 2,
                                   options: UIViewAnimationOptions.TransitionCrossDissolve,
                                   animations:
                                   {
+                                      self.mainView.alpha = 0
+                                      self.mainView.alpha = 1
                                       self.backgroundImageView.image = UIImage(named: condition.backgroundImage())
                                   },
                                   completion: nil
@@ -69,7 +73,7 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController
         print(weather)
 
         let normalTemperature: Double
-        = TempUnit.convertKelvinTo(Double(weather.temperature), tempUnit: Settings.getTempUnit());
+        = TemperatureUnit.convertKelvinTo(Double(weather.temperature), tempUnit: Settings.getTempUnit());
         let absTemperature = abs(normalTemperature)
 
         dispatch_async(dispatch_get_main_queue())
@@ -92,6 +96,7 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController
             self.updateLabel.text = String(format: "Last update: %@", formattedDate)
 
             self.tempUnitLabel?.text = Settings.getTempUnit().viewRepresentation()
+
             if let condition = weather.weatherCondition
             {
                 self.changeBackgroundImage(condition)

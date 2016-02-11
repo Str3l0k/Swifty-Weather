@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F10A9CC1C4FCF7800D10D6A /* ReloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F10A9CB1C4FCF7800D10D6A /* ReloadViewController.swift */; };
-		3F10A9CE1C4FCF8500D10D6A /* SendReloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F10A9CD1C4FCF8500D10D6A /* SendReloadViewController.swift */; };
+		3F10A9CC1C4FCF7800D10D6A /* ReloadViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F10A9CB1C4FCF7800D10D6A /* ReloadViewControllerProtocol.swift */; };
+		3F10A9CE1C4FCF8500D10D6A /* SendReloadViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F10A9CD1C4FCF8500D10D6A /* SendReloadViewControllerProtocol.swift */; };
 		3F10A9D01C5CFDA900D10D6A /* WeatherCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F10A9CF1C5CFDA900D10D6A /* WeatherCondition.swift */; };
 		3F35E31D1C6672FF0095F381 /* JsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F35E31C1C6672FF0095F381 /* JsonParser.swift */; };
 		3F35E31F1C66785A0095F381 /* ForeCastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F35E31E1C66785A0095F381 /* ForeCastViewController.swift */; };
@@ -31,8 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3F10A9CB1C4FCF7800D10D6A /* ReloadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReloadViewController.swift; sourceTree = "<group>"; };
-		3F10A9CD1C4FCF8500D10D6A /* SendReloadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendReloadViewController.swift; sourceTree = "<group>"; };
+		3F10A9CB1C4FCF7800D10D6A /* ReloadViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReloadViewControllerProtocol.swift; sourceTree = "<group>"; };
+		3F10A9CD1C4FCF8500D10D6A /* SendReloadViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendReloadViewControllerProtocol.swift; sourceTree = "<group>"; };
 		3F10A9CF1C5CFDA900D10D6A /* WeatherCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherCondition.swift; sourceTree = "<group>"; };
 		3F35E31C1C6672FF0095F381 /* JsonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonParser.swift; sourceTree = "<group>"; };
 		3F35E31E1C66785A0095F381 /* ForeCastViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForeCastViewController.swift; sourceTree = "<group>"; };
@@ -67,13 +67,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3F10A9CA1C4FCF6400D10D6A /* Protocol */ = {
+		3F10A9CA1C4FCF6400D10D6A /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				3F10A9CB1C4FCF7800D10D6A /* ReloadViewController.swift */,
-				3F10A9CD1C4FCF8500D10D6A /* SendReloadViewController.swift */,
+				3F10A9CB1C4FCF7800D10D6A /* ReloadViewControllerProtocol.swift */,
+				3F10A9CD1C4FCF8500D10D6A /* SendReloadViewControllerProtocol.swift */,
 			);
-			name = Protocol;
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		3F937B001C67AB360001B3AC /* Settings */ = {
@@ -211,7 +211,7 @@
 			children = (
 				3F937B011C67AB490001B3AC /* Main */,
 				3F937B001C67AB360001B3AC /* Settings */,
-				3F10A9CA1C4FCF6400D10D6A /* Protocol */,
+				3F10A9CA1C4FCF6400D10D6A /* Protocols */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -291,14 +291,14 @@
 				968278ED1C26EB5100460D1D /* CurrentWeatherViewController.swift in Sources */,
 				968278EB1C26EB5100460D1D /* AppDelegate.swift in Sources */,
 				4C10435896A9961EB81A74B3 /* Weather.swift in Sources */,
-				3F10A9CC1C4FCF7800D10D6A /* ReloadViewController.swift in Sources */,
+				3F10A9CC1C4FCF7800D10D6A /* ReloadViewControllerProtocol.swift in Sources */,
 				3F35E3211C6679350095F381 /* WeatherTableViewCell.swift in Sources */,
 				3F35E31F1C66785A0095F381 /* ForeCastViewController.swift in Sources */,
 				4C10407AE2E79994F60B4A93 /* Wind.swift in Sources */,
 				3F35E31D1C6672FF0095F381 /* JsonParser.swift in Sources */,
 				3F9BE9331C4FB87800DF2CAE /* SettingsTableViewController.swift in Sources */,
 				4C104118CAA1E61F2B4D8BA9 /* OpenWeatherAPISession.swift in Sources */,
-				3F10A9CE1C4FCF8500D10D6A /* SendReloadViewController.swift in Sources */,
+				3F10A9CE1C4FCF8500D10D6A /* SendReloadViewControllerProtocol.swift in Sources */,
 				3F9BE92D1C4A8BBF00DF2CAE /* TempUnit.swift in Sources */,
 				4C10419A8AF437826E9D10E3 /* OpenWeatherAPIConnection.swift in Sources */,
 				4C10434668C23144B397A475 /* OpenWeatherAPIURLHelper.swift in Sources */,

@@ -10,11 +10,12 @@ class OpenWeatherAPIURLHelper
     private init()
     {
     }
+
     private static let currentWeatherApiCallFormat        = "http://api.openweathermap.org/data/2.5/weather?q=%@&appid=%@"
     private static let hourlyForecastWeatherApiCallFormat = "http://api.openweathermap.org/data/2.5/forecast?q=%@&appid=%@"
     private static let dailyForecastWeatherApiCallFormat  = "http://api.openweathermap.org/data/2.5/forecast/daily?q=%@&appid=%@&cnt=%d"
 
-    // private helper
+    // helper
     static func createCurrentWeatherApiCallURL(city: String, applicationID: String) -> NSURL?
     {
         let cityURLString = createCurrentWeatherCityURLString(city, appID: applicationID)
@@ -36,7 +37,7 @@ class OpenWeatherAPIURLHelper
         return NSURL(string: cityURLString)
     }
 
-    static func createURLSessionTask(url: NSURL, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDataTask // todo extract to different helper
+    static func createURLSessionTask(url: NSURL, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDataTask
     {
         let request = NSURLRequest(URL: url)
         let config  = NSURLSessionConfiguration.defaultSessionConfiguration()

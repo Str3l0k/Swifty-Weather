@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
     </dependencies>
@@ -21,14 +21,12 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_fog_blurry" translatesAutoresizingMaskIntoConstraints="NO" id="nte-Ba-zrc">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <animations/>
                             </imageView>
                             <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="QXP-fy-EOD">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="desc" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRf-XY-NBj" userLabel="Label Weather description">
                                         <rect key="frame" x="264" y="219" width="72.5" height="42"/>
-                                        <animations/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="35"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -38,7 +36,6 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSD-hq-igq" userLabel="Label Temperature">
                                         <rect key="frame" x="173" y="88" width="254.5" height="131.5"/>
-                                        <animations/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="110"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -51,7 +48,6 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNW-F0-mat">
                                         <rect key="frame" x="427" y="88" width="39" height="131.5"/>
-                                        <animations/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="110"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -64,7 +60,6 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ji-Pd-6Sg">
                                         <rect key="frame" x="264" y="28" width="72.5" height="30"/>
-                                        <animations/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="25"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -74,7 +69,6 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="humidity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1gf-If-GNy">
                                         <rect key="frame" x="257" y="296" width="86" height="29"/>
-                                        <animations/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -84,7 +78,6 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KzI-B1-rK5">
                                         <rect key="frame" x="344" y="302" width="14" height="21.5"/>
-                                        <animations/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -94,7 +87,6 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pressure" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r76-tW-wwD">
                                         <rect key="frame" x="256" y="347" width="88" height="29"/>
-                                        <animations/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -104,7 +96,6 @@
                                     </label>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSw-X8-cZw">
                                         <rect key="frame" x="389" y="88" width="27" height="90"/>
-                                        <animations/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="110"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -114,7 +105,6 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hPa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kdz-IR-Aoe">
                                         <rect key="frame" x="345" y="353" width="30" height="21.5"/>
-                                        <animations/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -124,22 +114,19 @@
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="humidity" translatesAutoresizingMaskIntoConstraints="NO" id="f6U-Ej-tDN">
                                         <rect key="frame" x="196" y="292" width="36" height="36"/>
-                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="36" id="CBG-2H-PZM"/>
                                             <constraint firstAttribute="height" constant="36" id="EvU-z3-mcr"/>
                                         </constraints>
                                     </imageView>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="updateLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGX-0p-K8k">
-                                        <rect key="frame" x="0.0" y="586" width="600" height="13.5"/>
-                                        <animations/>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="updateLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGX-0p-K8k">
+                                        <rect key="frame" x="0.0" y="583" width="600" height="13.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pressure_gauge" translatesAutoresizingMaskIntoConstraints="NO" id="v7t-2U-kfA">
                                         <rect key="frame" x="198" y="345" width="32" height="32"/>
-                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="32" id="5Ov-01-JxH"/>
                                             <constraint firstAttribute="height" constant="32" id="eH6-6F-Nkq"/>
@@ -147,7 +134,6 @@
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRb-Xs-XlS">
                                         <rect key="frame" x="556" y="28" width="32" height="32"/>
-                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="32" id="KYk-27-H1X">
                                                 <variation key="heightClass=regular-widthClass=regular" constant="48"/>
@@ -165,14 +151,12 @@
                                         </connections>
                                     </button>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9OH-IX-R1s">
-                                        <rect key="frame" x="20" y="476" width="560" height="74"/>
-                                        <animations/>
+                                        <rect key="frame" x="20" y="451" width="560" height="99"/>
                                         <connections>
                                             <segue destination="K2v-QB-m9K" kind="embed" id="WGx-aJ-rqK"/>
                                         </connections>
                                     </containerView>
                                 </subviews>
-                                <animations/>
                                 <constraints>
                                     <constraint firstItem="f6U-Ej-tDN" firstAttribute="centerY" secondItem="1gf-If-GNy" secondAttribute="centerY" id="0EU-Z3-Ap1"/>
                                     <constraint firstItem="Kdz-IR-Aoe" firstAttribute="leading" secondItem="r76-tW-wwD" secondAttribute="trailing" constant="1" id="1eU-n5-aEx"/>
@@ -210,7 +194,7 @@
                                     <constraint firstItem="9OH-IX-R1s" firstAttribute="leading" secondItem="QXP-fy-EOD" secondAttribute="leading" constant="20" id="f1I-kb-SXB">
                                         <variation key="heightClass=regular-widthClass=regular" constant="70"/>
                                     </constraint>
-                                    <constraint firstItem="9OH-IX-R1s" firstAttribute="top" secondItem="r76-tW-wwD" secondAttribute="bottom" constant="100" id="fRN-eq-p9I"/>
+                                    <constraint firstItem="9OH-IX-R1s" firstAttribute="top" secondItem="r76-tW-wwD" secondAttribute="bottom" constant="75" id="fRN-eq-p9I"/>
                                     <constraint firstItem="r76-tW-wwD" firstAttribute="centerX" secondItem="1gf-If-GNy" secondAttribute="centerX" id="g0c-21-JaD"/>
                                     <constraint firstItem="PRf-XY-NBj" firstAttribute="leading" secondItem="7ji-Pd-6Sg" secondAttribute="leading" id="k2v-4y-FI0"/>
                                     <constraint firstItem="r76-tW-wwD" firstAttribute="top" secondItem="1gf-If-GNy" secondAttribute="bottom" constant="22.5" id="mtE-UI-K9N"/>
@@ -240,7 +224,6 @@
                                 </variation>
                             </view>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="QXP-fy-EOD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="2an-eN-nra"/>
@@ -259,6 +242,7 @@
                         <outlet property="labelCity" destination="7ji-Pd-6Sg" id="BIf-PS-wHw"/>
                         <outlet property="labelTemperature" destination="BSD-hq-igq" id="vpE-WY-uvm"/>
                         <outlet property="labelWeatherDescription" destination="PRf-XY-NBj" id="kpR-rH-iYO"/>
+                        <outlet property="mainView" destination="QXP-fy-EOD" id="txv-YI-gkw"/>
                         <outlet property="minusLabel" destination="hSw-X8-cZw" id="KAy-1s-KdY"/>
                         <outlet property="pressureLabel" destination="r76-tW-wwD" id="e5X-Hk-pkX"/>
                         <outlet property="tempUnitLabel" destination="jNW-F0-mat" id="Ug6-BC-Zv2"/>
@@ -282,9 +266,8 @@
             <objects>
                 <tableViewController id="K2v-QB-m9K" customClass="ForeCastViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="iPv-aT-epa">
-                        <rect key="frame" x="0.0" y="0.0" width="560" height="74"/>
+                        <rect key="frame" x="0.0" y="0.0" width="560" height="99"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -297,7 +280,6 @@
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23°C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mXy-Zq-sZM">
                                             <rect key="frame" x="513.5" y="11" width="38.5" height="20.5"/>
-                                            <animations/>
                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -308,7 +290,6 @@
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="partly cloudy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMc-75-dcv">
                                             <rect key="frame" x="231" y="11" width="98" height="20.5"/>
-                                            <animations/>
                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -319,7 +300,6 @@
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18 Uhr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQZ-cD-TyR">
                                             <rect key="frame" x="8" y="11" width="49.5" height="20.5"/>
-                                            <animations/>
                                             <accessibility key="accessibilityConfiguration" label="I"/>
                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -329,7 +309,6 @@
                                             </variation>
                                         </label>
                                     </subviews>
-                                    <animations/>
                                     <constraints>
                                         <constraint firstItem="mXy-Zq-sZM" firstAttribute="baseline" secondItem="GQZ-cD-TyR" secondAttribute="baseline" id="3bb-av-Odm"/>
                                         <constraint firstItem="GQZ-cD-TyR" firstAttribute="top" secondItem="CW2-sf-heg" secondAttribute="topMargin" constant="3" id="4fN-oD-ijm"/>
@@ -350,7 +329,6 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
-                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="lblCondition" destination="wMc-75-dcv" id="AnB-p2-2EW"/>

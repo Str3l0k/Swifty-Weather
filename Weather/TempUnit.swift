@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum TempUnit: String
+public enum TemperatureUnit: String
 {
     case Fahrenheit = "FAHRENHEIT"
     case Celsius    = "CELSIUS"
@@ -29,7 +29,7 @@ public enum TempUnit: String
         return (KelvinToCelcius(kelvin)) * 1.8000 + 32.00
     }
 
-    public static func convertKelvinTo(kelvin: Double, tempUnit: TempUnit) -> Double
+    public static func convertKelvinTo(kelvin: Double, tempUnit: TemperatureUnit) -> Double
     {
         switch tempUnit
         {

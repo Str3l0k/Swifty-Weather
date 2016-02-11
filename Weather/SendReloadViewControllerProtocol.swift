@@ -1,5 +1,5 @@
 //
-//  SendReloadViewController.swift
+//  SendReloadViewControllerProtocol.swift
 //  Weather
 //
 //  Created by student on 20.01.16.

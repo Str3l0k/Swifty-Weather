@@ -12,7 +12,7 @@ class Settings
 {
     private init()
     {
-        //abstract class in swift; LOL
+        // abstract class in swift; LOL
     }
 
     private static let CITY:             String = "CITY"
@@ -35,19 +35,20 @@ class Settings
         }
     }
 
-    static func setTempUnit(tempUnit: TempUnit)
+    static func setTempUnit(tempUnit: TemperatureUnit)
     {
         UserDefaultsHelper.saveUserDefault(TEMPERATURE_UNIT, value: tempUnit.rawValue)
     }
 
-    static func getTempUnit() -> TempUnit
+    static func getTempUnit() -> TemperatureUnit
     {
         let value: String? = UserDefaultsHelper.loadUserDefaults(TEMPERATURE_UNIT)
 
-        if let value = value, tempUnit = TempUnit.init(raw: value)
+        if let value = value, tempUnit = TemperatureUnit.init(raw: value)
         {
             return tempUnit
         }
-        return TempUnit.Celsius
+
+        return TemperatureUnit.Celsius
     }
 }

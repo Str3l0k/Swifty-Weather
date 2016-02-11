@@ -40,9 +40,11 @@ class ForeCastViewController: UITableViewController
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let weather = forecast[indexPath.row]
-        let cell    = tableView.dequeueReusableCellWithIdentifier("WeatherCellIdentifier") as! WeatherTableViewCell
+
+        let cell = tableView.dequeueReusableCellWithIdentifier("WeatherCellIdentifier") as! WeatherTableViewCell
         cell.configureCellForWeather(weather)
         cell.backgroundColor = UIColor.clearColor()
+
         return cell
     }
 
@@ -59,8 +61,9 @@ class ForeCastViewController: UITableViewController
 
     func refreshUI()
     {
-        dispatch_async(dispatch_get_main_queue(), {
-            self.tableView.reloadData()
-        });
+        dispatch_async(dispatch_get_main_queue(),
+                       {
+                           self.tableView.reloadData()
+                       });
     }
 }
