@@ -9,7 +9,7 @@ struct Wind
 {
     // data
     let directionDegrees: Int
-    let speed: Float
+    let speed:            Float
 
     // constructor
     init(directionDegrees: Int, speed: Float)

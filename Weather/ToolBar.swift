@@ -8,8 +8,11 @@
 
 import Foundation
 import UIKit
-public class SettingsToolBar : UIToolbar, UIToolbarDelegate{
-    public func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
+
+public class SettingsToolBar: UIToolbar, UIToolbarDelegate
+{
+    public func positionForBar(bar: UIBarPositioning) -> UIBarPosition
+    {
         return UIBarPosition.TopAttached;
     }
 }

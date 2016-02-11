@@ -25,7 +25,7 @@ struct Weather
     var city:        String?
     var name:        String?
     var description: String?
-    
+
     var weatherCondition: WeatherCondition?
 
     // constructor

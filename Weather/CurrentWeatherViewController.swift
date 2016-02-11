@@ -32,23 +32,19 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         let temp = Settings.getCity();
-        if temp != nil && !temp!.isEmpty {
+        if temp != nil && !temp!.isEmpty
+        {
             city = temp!
         }
         loadWeather()
     }
-    
-    func loadWeather(){
+
+    func loadWeather()
+    {
         let weatherAPIConnection = WeatherAPIConnection(city: city)
         weatherAPIConnection.fetchCurrentWeather(processReturnedWeatherJson)
     }
 
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?)
-    {
-        super.touchesEnded(touches, withEvent: event)
-
-        //changeBackgroundImage()
-    }
     private func changeBackgroundImage(condition: WeatherCondition)
     {
         var image: String?
@@ -73,7 +69,8 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController
         {
             image = "background_snow_blurry"
         }
-        else {
+        else
+        {
             image = "background_fog_blurry"
         }
 
@@ -99,8 +96,9 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController
 
         print(weather)
 
-        let normalTemperature:Double = TempUnit.convertKelvinTo(Double(weather.temperature), tempUnit: Settings.getTempUnit());
-        let absTemperature    = abs(normalTemperature)
+        let normalTemperature: Double
+        = TempUnit.convertKelvinTo(Double(weather.temperature), tempUnit: Settings.getTempUnit());
+        let absTemperature = abs(normalTemperature)
 
         dispatch_async(dispatch_get_main_queue())
         {
@@ -120,22 +118,28 @@ class CurrentWeatherViewController: UIViewController, ReloadViewController
             let formattedDate
             = dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: NSTimeInterval(weather.timestamp)))
             self.updateLabel.text = String(format: "Last update: %@", formattedDate)
-            
+
             self.tempUnitLabel?.text = Settings.getTempUnit().viewRepresentation()
-            if let condition = weather.weatherCondition{
+            if let condition = weather.weatherCondition
+            {
                 self.changeBackgroundImage(condition)
             }
         }
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let controller = segue.destinationViewController as? SendReloadViewController{
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if let controller = segue.destinationViewController as? SendReloadViewController
+        {
             controller.setReloadViewController(self)
         }
     }
-    
-    func reload() {
+
+    func reload()
+    {
         let temp = Settings.getCity();
-        if temp != nil && !temp!.isEmpty {
+        if temp != nil && !temp!.isEmpty
+        {
             city = temp!
         }
         loadWeather()

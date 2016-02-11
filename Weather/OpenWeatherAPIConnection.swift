@@ -187,8 +187,9 @@ class WeatherAPIConnection
         {
             weather = Weather(id: id, timestamp: timestamp)
         }
-        
-        if let condition = condition{
+
+        if let condition = condition
+        {
             weather?.weatherCondition = WeatherCondition.init(raw: condition)
         }
 

@@ -10,40 +10,50 @@ import Foundation
 import UIKit
 
 
+public class SettingsViewController: UIViewController, UIToolbarDelegate, SendReloadViewController
+{
+    var childViewController: SettingsTableViewController? = nil;
 
-public class SettingsViewController : UIViewController, UIToolbarDelegate, SendReloadViewController {
-    var childViewController:SettingsTableViewController? = nil;
-    
     @IBOutlet weak var toolbar: UIToolbar!
-    public override func viewDidLoad() {
+    public override func viewDidLoad()
+    {
         toolbar.delegate = self
     }
-    
-    @IBAction func cancelButtonPressed(sender: AnyObject) {
+
+    @IBAction func cancelButtonPressed(sender: AnyObject)
+    {
         self.dismissViewControllerAnimated(true, completion: nil);
     }
-    @IBAction func saveButtonPressed(sender: AnyObject) {
+
+    @IBAction func saveButtonPressed(sender: AnyObject)
+    {
         guard childViewController != nil else{
             return;
         }
         childViewController!.saveButtonPressed(sender);
-        if let reload = sourceViewController{
+        if let reload = sourceViewController
+        {
             reload.reload()
         }
         self.dismissViewControllerAnimated(true, completion: nil);
     }
-    var sourceViewController:ReloadViewController?
-    public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    var sourceViewController: ReloadViewController?
+    public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
         let segName = segue.identifier
-        if segName == "SettingsTableViewControllerSegue"{
+        if segName == "SettingsTableViewControllerSegue"
+        {
             childViewController = segue.destinationViewController as? SettingsTableViewController
         }
     }
-    
-    public func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
+
+    public func positionForBar(bar: UIBarPositioning) -> UIBarPosition
+    {
         return UIBarPosition.TopAttached;
     }
-    func setReloadViewController(controller: ReloadViewController) {
+
+    func setReloadViewController(controller: ReloadViewController)
+    {
         sourceViewController = controller;
     }
 }
