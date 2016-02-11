@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol SendReloadViewController
+protocol SendReloadViewControllerProtocol
 {
-    func setReloadViewController(controller: ReloadViewController)
+    func setReloadViewController(controller: ReloadViewControllerProtocol)
 }

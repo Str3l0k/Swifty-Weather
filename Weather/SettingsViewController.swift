@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
-public class SettingsViewController: UIViewController, UIToolbarDelegate, SendReloadViewController
+public class SettingsViewController: UIViewController, UIToolbarDelegate, SendReloadViewControllerProtocol
 {
     var childViewController:      SettingsTableViewController?
-    var reloadableViewController: ReloadViewController?
+    var reloadableViewController: ReloadViewControllerProtocol?
     @IBOutlet weak var toolbar: UIToolbar!
 
     public override func viewDidLoad()
@@ -52,7 +52,7 @@ public class SettingsViewController: UIViewController, UIToolbarDelegate, SendRe
         return UIBarPosition.TopAttached
     }
 
-    func setReloadViewController(controller: ReloadViewController)
+    func setReloadViewController(controller: ReloadViewControllerProtocol)
     {
         reloadableViewController = controller
     }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ReloadViewController
+protocol ReloadViewControllerProtocol
 {
     func reload()
 }

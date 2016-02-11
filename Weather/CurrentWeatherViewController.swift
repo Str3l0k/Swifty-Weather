@@ -106,7 +106,7 @@ class CurrentWeatherViewController: UIViewController
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
-        if let controller = segue.destinationViewController as? SendReloadViewController
+        if let controller = segue.destinationViewController as? SendReloadViewControllerProtocol
         {
             controller.setReloadViewController(self)
         }
@@ -117,8 +117,9 @@ class CurrentWeatherViewController: UIViewController
     }
 }
 
+// MARK Reload
 
-extension CurrentWeatherViewController: ReloadViewController
+extension CurrentWeatherViewController: ReloadViewControllerProtocol
 {
     func reload()
     {
