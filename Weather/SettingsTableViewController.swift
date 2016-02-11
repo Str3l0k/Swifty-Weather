@@ -74,6 +74,7 @@ public class SettingsTableViewController: UITableViewController
             var usText = text.stringByReplacingOccurrencesOfString("ä", withString: "ae")
             usText = usText.stringByReplacingOccurrencesOfString("ö", withString: "oe")
             usText = usText.stringByReplacingOccurrencesOfString("ü", withString: "ue")
+            usText = usText.stringByReplacingOccurrencesOfString(" ", withString: "")
 
             Settings.setCity(usText.capitalizedString);
         }

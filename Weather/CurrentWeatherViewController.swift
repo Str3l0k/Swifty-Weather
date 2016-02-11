@@ -32,6 +32,7 @@ class CurrentWeatherViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        fadeOutBackground()
         loadWeather()
     }
 
@@ -54,7 +55,7 @@ class CurrentWeatherViewController: UIViewController
     private func changeBackgroundImage(condition: WeatherCondition)
     {
         UIView.transitionWithView(self.backgroundImageView,
-                                  duration: 2,
+                                  duration: 1,
                                   options: UIViewAnimationOptions.TransitionCrossDissolve,
                                   animations:
                                   {
@@ -65,10 +66,47 @@ class CurrentWeatherViewController: UIViewController
                                   completion: nil
         )
     }
+    
+    private func fadeOutBackground()
+    {
+        UIView.transitionWithView(self.backgroundImageView,
+            duration: 1,
+            options: UIViewAnimationOptions.TransitionCrossDissolve,
+            animations:
+            {
+                self.mainView.alpha = 1
+                self.mainView.alpha = 0
+            },
+            completion: nil
+        )
+    }
+    private func fadeInBackground()
+    {
+        UIView.transitionWithView(self.backgroundImageView,
+            duration: 1,
+            options: UIViewAnimationOptions.TransitionCrossDissolve,
+            animations:
+            {
+                self.mainView.alpha = 0
+                self.mainView.alpha = 1
+            },
+            completion: nil
+        )
+    }
 
     private func processReturnedWeatherJson(weather: Weather?)
     {
         guard let weather = weather else {
+            dispatch_async(dispatch_get_main_queue())
+            {
+                self.fadeInBackground()
+                self.labelCity.text = "Not Found"
+                self.labelWeatherDescription.text = ""
+                self.labelTemperature.text = "0"
+                self.minusLabel.hidden = true
+                self.pressureLabel.text = "0"
+                self.humidityLabel.text = "0"
+            }
             return
         }
 
@@ -125,6 +163,7 @@ extension CurrentWeatherViewController: ReloadViewControllerProtocol
 {
     func reload()
     {
+        fadeOutBackground()
         loadWeather()
     }
 }
