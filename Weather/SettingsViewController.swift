@@ -9,17 +9,30 @@
 import Foundation
 import UIKit
 
-public class SettingsViewController: UIViewController, UIToolbarDelegate, SendReloadViewControllerProtocol
+public class SettingsViewController: UIViewController
 {
     var childViewController:      SettingsTableViewController?
     var reloadableViewController: ReloadViewControllerProtocol?
+
     @IBOutlet weak var toolbar: UIToolbar!
 
+    // MARK: - overwritten functions
     public override func viewDidLoad()
     {
         toolbar.delegate = self
     }
 
+    public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        let segName = segue.identifier
+
+        if segName == "SettingsTableViewControllerSegue"
+        {
+            childViewController = segue.destinationViewController as? SettingsTableViewController
+        }
+    }
+
+    // MARK: - IBActions
     @IBAction func cancelButtonPressed(sender: AnyObject)
     {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -30,28 +43,32 @@ public class SettingsViewController: UIViewController, UIToolbarDelegate, SendRe
         guard let childViewController = childViewController else {
             return;
         }
+
         childViewController.saveButtonPressed(sender)
+
         if let reload = reloadableViewController
         {
             reload.reload()
         }
+
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+}
 
-    public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
-    {
-        let segName = segue.identifier
-        if segName == "SettingsTableViewControllerSegue"
-        {
-            childViewController = segue.destinationViewController as? SettingsTableViewController
-        }
-    }
+// MARK: - UIToolbarDelegate
 
+extension SettingsViewController: UIToolbarDelegate
+{
     public func positionForBar(bar: UIBarPositioning) -> UIBarPosition
     {
         return UIBarPosition.TopAttached
     }
+}
 
+// MARK: - SendReloadViewControllerProtocol
+
+extension SettingsViewController: SendReloadViewControllerProtocol
+{
     func setReloadViewController(controller: ReloadViewControllerProtocol)
     {
         reloadableViewController = controller

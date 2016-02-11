@@ -23,6 +23,7 @@ public class SettingsTableViewController: UITableViewController
         CityTextField.text = Settings.getCity()
 
         let currentTempUnit = Settings.getTempUnit()
+
         if currentTempUnit == TemperatureUnit.Fahrenheit
         {
             Fahrenheit.accessoryType = UITableViewCellAccessoryType.Checkmark
@@ -68,9 +69,13 @@ public class SettingsTableViewController: UITableViewController
             Settings.setTempUnit(TemperatureUnit.Celsius)
         }
 
-        if let text = CityTextField.text
+        if let text = CityTextField.text?.lowercaseString
         {
-            Settings.setCity(text);
+            var usText = text.stringByReplacingOccurrencesOfString("ä", withString: "ae")
+            usText = usText.stringByReplacingOccurrencesOfString("ö", withString: "oe")
+            usText = usText.stringByReplacingOccurrencesOfString("ü", withString: "ue")
+
+            Settings.setCity(usText.capitalizedString);
         }
         else
         {
